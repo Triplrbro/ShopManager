@@ -4,10 +4,57 @@
     android:layout_height="match_parent">
 
     <com.youth.banner.Banner
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/banner"
+        android:id="@+id/bn_banner"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
+<!--    <android.support.v4.widget.NestedScrollView-->
+<!--        android:id="@+id/sv_item"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
 
 
+<!--    </android.support.v4.widget.NestedScrollView>-->
+
+    <LinearLayout
+        android:layout_below="@id/bn_banner"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/ll_type_first"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100dp">
+            <ImageView
+                android:background="@color/aquamarine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:text="aaa"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_type_second"
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100dp">
+            <ImageView
+                android:background="@color/aquamarine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name" />
+            <TextView
+                android:text="aaa"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
