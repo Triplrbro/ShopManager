@@ -42,8 +42,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'org.jetbrains:annotations-java5:15.0'
-
+    //增加v4包提供兼容性滚动组件
+    implementation 'com.android.support:support-v4:29.0.0'
     implementation 'com.alibaba:fastjson:1.2.47'
     implementation 'org.greenrobot:greendao:3.2.2' // add library
     implementation 'org.greenrobot:greendao-generator:3.2.2'
+    //图片轮播框架
+    implementation 'com.youth.banner:banner:1.4.10'
+    //glide，比较好的版本，Matisse版本，配合glide3.7.0，因为后面的glide版本没有了asbitmap等方法
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
 }
