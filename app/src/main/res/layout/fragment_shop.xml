@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="4"
-        android:textSize="100dp"/>
+        android:layout_height="match_parent">
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </RelativeLayout>

@@ -7,18 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import androidx.annotation.Nullable;
+
 import com.example.shopmanager.R;
 
-import org.jetbrains.annotations.Nullable;
 
-public class BrandFragment extends Fragment {
+public class ShopFragment extends Fragment {
 
-    private View fragment_brand;
+    private View fragment_loves;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        fragment_brand = inflater.inflate(R.layout.fragment_brand, null);
-        return fragment_brand;
+        fragment_loves = inflater.inflate(R.layout.fragment_shop, null);
+        return fragment_loves;
     }
 }

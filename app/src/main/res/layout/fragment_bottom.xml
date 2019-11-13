@@ -21,7 +21,7 @@
                 android:id="@+id/bt_first"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@mipmap/ic_launcher" />
+                android:background="@mipmap/ic_index_click" />
 
             <TextView
                 android:id="@+id/tv_first"
@@ -33,30 +33,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:id="@+id/ll_type"
-            >
-
-            <Button
-                android:id="@+id/bt_type"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:background="@mipmap/type_unclick" />
-
-            <TextView
-                android:id="@+id/tv_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="商品类别"
-                android:textColor="#888"
-                android:textSize="10dp" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
@@ -64,19 +40,19 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
-            android:id="@+id/ll_brand">
+            android:id="@+id/ll_BBS">
 
             <Button
-                android:id="@+id/bt_brand"
+                android:id="@+id/bt_BBS"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@mipmap/brand_unclick" />
+                android:background="@mipmap/ic_bbs_unclick" />
 
             <TextView
-                android:id="@+id/tv_brand"
+                android:id="@+id/tv_BBS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="品牌"
+                android:text="留言"
                 android:textColor="#888"
                 android:textSize="10dp" />
 
@@ -94,13 +70,13 @@
                 android:id="@+id/bt_loves"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@mipmap/loves_unclick" />
+                android:background="@mipmap/ic_shop_unclick" />
 
             <TextView
                 android:id="@+id/tv_loves"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="心愿单"
+                android:text="购物车"
                 android:textColor="#888"
                 android:textSize="10dp" />
 
@@ -118,7 +94,7 @@
                 android:id="@+id/bt_myself"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:background="@mipmap/myself_unclick" />
+                android:background="@mipmap/ic_myself_unclick" />
 
             <TextView
                 android:id="@+id/tv_myself"
