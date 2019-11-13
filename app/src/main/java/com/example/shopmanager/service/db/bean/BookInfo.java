@@ -155,4 +155,20 @@ public class BookInfo {
     }
 
 
+    @Override
+    public String toString() {
+        return "BookInfo{" +
+                "_id=" + _id +
+                ", code='" + code + '\'' +
+                ", bookNmae='" + bookNmae + '\'' +
+                ", price='" + price + '\'' +
+                ", oldPrice='" + oldPrice + '\'' +
+                ", author='" + author + '\'' +
+                ", press='" + press + '\'' +
+                ", binding='" + binding + '\'' +
+                ", score='" + score + '\'' +
+                ", contents='" + contents + '\'' +
+                ", bookPhoto='" + bookPhoto + '\'' +
+                '}';
+    }
 }

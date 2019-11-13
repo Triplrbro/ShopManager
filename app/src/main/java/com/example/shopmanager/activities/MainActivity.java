@@ -28,7 +28,9 @@ public class MainActivity extends Activity {
 
         // 数据库初始化
         initDB();
-//        testInsert();
+        for (int i = 0; i <6; i++) {
+            testInsert();
+        }
         query();
 
 
