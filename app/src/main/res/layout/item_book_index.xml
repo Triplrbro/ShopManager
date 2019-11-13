@@ -10,6 +10,7 @@
         android:layout_height="104dp"/>
 
     <TextView
+        android:id="@+id/tv_book_name"
         android:textSize="15dp"
         android:textStyle="bold"
         android:text="万古江河"
