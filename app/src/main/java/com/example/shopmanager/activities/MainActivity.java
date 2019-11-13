@@ -13,6 +13,7 @@ import com.example.shopmanager.fragment.FirstPageFragment;
 import com.example.shopmanager.service.BaseService;
 import com.example.shopmanager.service.BookInfoService;
 import com.example.shopmanager.service.db.bean.BookInfo;
+import com.example.shopmanager.utils.SharedPreferencesUtil;
 
 import java.util.List;
 
@@ -42,6 +43,7 @@ public class MainActivity extends Activity {
 
     private void initDB(){
         BaseService.DBInit(this);
+        SharedPreferencesUtil.init(this);
     }
 
     private void testInsert(){
