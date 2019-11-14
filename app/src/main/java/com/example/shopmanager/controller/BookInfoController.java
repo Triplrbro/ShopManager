@@ -42,6 +42,14 @@ public class BookInfoController {
     }
 
     /**
+     *  根据 id 获取图书信息
+     */
+    public BookInfo getBookInfoById(Long id){
+        BookInfo bookInfoByName = bookInfoService.getBookInfoById(id);
+        return bookInfoByName;
+    }
+
+    /**
      *  设定图书信息
      */
     public void setBookInfo(BookInfo bookInfo){

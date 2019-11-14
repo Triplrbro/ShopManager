@@ -54,4 +54,13 @@ public class BookInfoService extends BaseService {
         List<BookInfo> list = bookInfoDao.queryBuilder().limit(num).list();
         return list;
     }
+
+    /**
+     *  根据 id 获取图书信息
+     */
+    public BookInfo getBookInfoById(Long id) {
+        BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
+        BookInfo bookInfo = bookInfoDao.queryBuilder().where(BookInfoDao.Properties._id.eq(id)).unique();
+        return bookInfo;
+    }
 }
