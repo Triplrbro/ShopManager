@@ -14,9 +14,11 @@ import androidx.annotation.Nullable;
 
 import com.example.shopmanager.R;
 import com.example.shopmanager.controller.BookInfoController;
+import com.example.shopmanager.controller.ShoppingCarController;
 import com.example.shopmanager.service.BaseService;
 import com.example.shopmanager.service.BookInfoService;
 import com.example.shopmanager.service.db.bean.BookInfo;
+import com.example.shopmanager.service.db.bean.ShoppingCart;
 
 import java.util.List;
 
@@ -28,6 +30,10 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
     private TextView tv_show_data_book;
     private ImageView test_image;
     private Button bt_show_data_book;
+    private Button tv_cut_data_shop;
+    private Button bt_insert_data_shop;
+    private Button bt_add_data_shop;
+    private ShoppingCarController shoppingCarController;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,6 +41,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_add_resource);
 
         bookInfoController = new BookInfoController();
+        shoppingCarController = new ShoppingCarController();
 
         initView();
     }
@@ -46,11 +53,17 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
         tv_show_data_book = (TextView) findViewById(R.id.tv_show_data_book);
         test_image = (ImageView) findViewById(R.id.test_image);
         bt_show_data_book = (Button) findViewById(R.id.bt_show_data_book);
+        tv_cut_data_shop = (Button) findViewById(R.id.tv_cut_data_shop);
+        bt_insert_data_shop = (Button) findViewById(R.id.bt_insert_data_shop);
+        bt_add_data_shop = (Button) findViewById(R.id.bt_add_data_shop);
 
         bt_add_data_book.setOnClickListener(this);
         bt_remove_data_book.setOnClickListener(this);
         bt_add_img.setOnClickListener(this);
         bt_show_data_book.setOnClickListener(this);
+        tv_cut_data_shop.setOnClickListener(this);
+        bt_insert_data_shop.setOnClickListener(this);
+        bt_add_data_shop.setOnClickListener(this);
     }
 
 
@@ -63,8 +76,6 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, 2);
                 System.out.println("=========获取图片");
-
-
                 break;
             case R.id.bt_add_data_book:
                 testInsert();
@@ -79,6 +90,22 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
             case R.id.bt_remove_data_book:
                 BaseService baseService = new BaseService();
                 baseService.daoSession.getBookInfoDao().deleteAll();
+                break;
+            case R.id.tv_cut_data_shop:
+                int i = shoppingCarController.cutShop(1L);
+                System.out.println("==========="+i);
+                tv_show_data_book.setText(String.valueOf(i));
+                break;
+            case R.id.bt_add_data_shop:
+                int i1 = shoppingCarController.addShop(1L);
+                tv_show_data_book.setText(String.valueOf(i1));
+                System.out.println("==========="+i1);
+                break;
+            case R.id.bt_insert_data_shop:
+                ShoppingCart shoppingCart = new ShoppingCart(null, 1L, 1L, 1, false);
+                shoppingCarController.setShoppingCarOnce(shoppingCart);
+                System.out.println("============="+shoppingCart.toString());
+                tv_show_data_book.setText(shoppingCart.toString());
                 break;
         }
     }

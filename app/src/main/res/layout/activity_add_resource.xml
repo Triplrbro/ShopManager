@@ -30,10 +30,26 @@
         android:text="清空图书信息"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt_add_data_shop"
+        android:text="addShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt_insert_data_shop"
+        android:text="insertShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/tv_cut_data_shop"
+        android:text="deleShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <TextView
         android:id="@+id/tv_show_data_book"
-        android:text="清空图书信息"
+        android:text="show info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

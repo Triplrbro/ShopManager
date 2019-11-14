@@ -1,13 +1,18 @@
 package com.example.shopmanager.service.db.dao;
 
+import java.util.List;
+import java.util.ArrayList;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteStatement;
 
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.Property;
+import org.greenrobot.greendao.internal.SqlUtils;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
+
+import com.example.shopmanager.service.db.bean.BookInfo;
 
 import com.example.shopmanager.service.db.bean.ShoppingCart;
 
@@ -31,6 +36,8 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
         public final static Property DeleSign = new Property(4, boolean.class, "deleSign", false, "DELE_SIGN");
     }
 
+    private DaoSession daoSession;
+
 
     public ShoppingCartDao(DaoConfig config) {
         super(config);
@@ -38,6 +45,7 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
     
     public ShoppingCartDao(DaoConfig config, DaoSession daoSession) {
         super(config, daoSession);
+        this.daoSession = daoSession;
     }
 
     /** Creates the underlying database table. */
@@ -102,6 +110,12 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
     }
 
     @Override
+    protected final void attachEntity(ShoppingCart entity) {
+        super.attachEntity(entity);
+        entity.__setDaoSession(daoSession);
+    }
+
+    @Override
     public Long readKey(Cursor cursor, int offset) {
         return cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0);
     }    
@@ -152,4 +166,95 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
         return true;
     }
     
+    private String selectDeep;
+
+    protected String getSelectDeep() {
+        if (selectDeep == null) {
+            StringBuilder builder = new StringBuilder("SELECT ");
+            SqlUtils.appendColumns(builder, "T", getAllColumns());
+            builder.append(',');
+            SqlUtils.appendColumns(builder, "T0", daoSession.getBookInfoDao().getAllColumns());
+            builder.append(" FROM SHOPPING_CART T");
+            builder.append(" LEFT JOIN BOOK_INFO T0 ON T.\"BOOK_ID\"=T0.\"_id\"");
+            builder.append(' ');
+            selectDeep = builder.toString();
+        }
+        return selectDeep;
+    }
+    
+    protected ShoppingCart loadCurrentDeep(Cursor cursor, boolean lock) {
+        ShoppingCart entity = loadCurrent(cursor, 0, lock);
+        int offset = getAllColumns().length;
+
+        BookInfo bookInfo = loadCurrentOther(daoSession.getBookInfoDao(), cursor, offset);
+        entity.setBookInfo(bookInfo);
+
+        return entity;    
+    }
+
+    public ShoppingCart loadDeep(Long key) {
+        assertSinglePk();
+        if (key == null) {
+            return null;
+        }
+
+        StringBuilder builder = new StringBuilder(getSelectDeep());
+        builder.append("WHERE ");
+        SqlUtils.appendColumnsEqValue(builder, "T", getPkColumns());
+        String sql = builder.toString();
+        
+        String[] keyArray = new String[] { key.toString() };
+        Cursor cursor = db.rawQuery(sql, keyArray);
+        
+        try {
+            boolean available = cursor.moveToFirst();
+            if (!available) {
+                return null;
+            } else if (!cursor.isLast()) {
+                throw new IllegalStateException("Expected unique result, but count was " + cursor.getCount());
+            }
+            return loadCurrentDeep(cursor, true);
+        } finally {
+            cursor.close();
+        }
+    }
+    
+    /** Reads all available rows from the given cursor and returns a list of new ImageTO objects. */
+    public List<ShoppingCart> loadAllDeepFromCursor(Cursor cursor) {
+        int count = cursor.getCount();
+        List<ShoppingCart> list = new ArrayList<ShoppingCart>(count);
+        
+        if (cursor.moveToFirst()) {
+            if (identityScope != null) {
+                identityScope.lock();
+                identityScope.reserveRoom(count);
+            }
+            try {
+                do {
+                    list.add(loadCurrentDeep(cursor, false));
+                } while (cursor.moveToNext());
+            } finally {
+                if (identityScope != null) {
+                    identityScope.unlock();
+                }
+            }
+        }
+        return list;
+    }
+    
+    protected List<ShoppingCart> loadDeepAllAndCloseCursor(Cursor cursor) {
+        try {
+            return loadAllDeepFromCursor(cursor);
+        } finally {
+            cursor.close();
+        }
+    }
+    
+
+    /** A raw-style query where you can pass any WHERE clause and arguments. */
+    public List<ShoppingCart> queryDeep(String where, String... selectionArg) {
+        Cursor cursor = db.rawQuery(getSelectDeep() + where, selectionArg);
+        return loadDeepAllAndCloseCursor(cursor);
+    }
+ 
 }
