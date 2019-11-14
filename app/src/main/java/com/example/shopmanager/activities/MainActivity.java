@@ -26,13 +26,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 数据库初始化
-        initDB();
-        for (int i = 0; i <6; i++) {
-            testInsert();
-        }
-        query();
-
 
         fragmentManager = getFragmentManager();
         transaction = fragmentManager.beginTransaction();
