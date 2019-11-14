@@ -1,9 +1,13 @@
 package com.example.shopmanager.activities;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -21,6 +25,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
     private Button bt_add_img;
     private BookInfoController bookInfoController;
     private TextView tv_show_data_book;
+    private ImageView test_image;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +42,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
         bt_remove_data_book = findViewById(R.id.bt_remove_data_book);
         bt_add_img = findViewById(R.id.bt_add_img);
         tv_show_data_book = (TextView) findViewById(R.id.tv_show_data_book);
+        test_image = (ImageView) findViewById(R.id.test_image);
 
         bt_add_data_book.setOnClickListener(this);
         bt_remove_data_book.setOnClickListener(this);
@@ -46,32 +52,49 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        switch (v.getId()) {
+            case R.id.bt_add_img:
+                System.out.println("=========获取图片");
+                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent, 2);
+                System.out.println("=========获取图片");
+                break;
             case R.id.bt_add_data_book:
                 testInsert();
                 break;
             case R.id.bt_remove_data_book:
                 List<BookInfo> query = query();
-                for(BookInfo bookInfo : query){
-                    tv_show_data_book.setText(tv_show_data_book.getText()+" \n  "+bookInfo.toString());
+                for (BookInfo bookInfo : query) {
+                    tv_show_data_book.setText(tv_show_data_book.getText() + " \n  " + bookInfo.toString());
                 }
                 break;
         }
     }
 
 
-
-    private void testInsert(){
+    private void testInsert() {
         BookInfo bookInfo = new BookInfo(null, "xxxx", "新华字典", "200", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location");
         BookInfoService bookInfoService = new BookInfoService();
         bookInfoService.setBookInfo(bookInfo);
     }
 
-    private List<BookInfo> query(){
+    private List<BookInfo> query() {
         BookInfoService bookInfoService = new BookInfoService();
         List<BookInfo> bookInfos = bookInfoService.queryBookInfoList();
         return bookInfos;
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 2) {
+            // 从相册返回的数据
+            if (data != null) {
+                // 得到图片的全路径
+                Uri uri = data.getData();
+                String path = uri.getPath();
+                System.out.println("========= 图片地址： "+path);
+                test_image.setImageURI(uri);
+            }
+        }
+    }
 }
