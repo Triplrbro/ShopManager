@@ -50,10 +50,10 @@
             android:singleLine="true" />
 
         <Button
-            android:text="login"
+            android:text="regist"
             android:layout_marginTop="@dimen/margin_20"
             android:background="@color/gray2"
-            android:id="@+id/bt_login"
+            android:id="@+id/bt_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

@@ -22,6 +22,8 @@ public class SharedPreferencesUtil {
     private static String USER_NAME = "USER_NAME";
 
 
+    //TODO:无SharedPreferences文件返回0
+
     private static String getBase(String key) {
         sp = context.getSharedPreferences("setting", MODE_PRIVATE);
         return sp.getString(key,"0");

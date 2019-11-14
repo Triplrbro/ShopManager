@@ -40,11 +40,12 @@ public class UserController {
     public boolean autoCheckUserAccess() {
         SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
         String userName = sharedPreferencesUtil.getUserName();
-        if (userName == null || userName.isEmpty()) {
-            return false;
-        } else {
-            return true;
-        }
+        return userName!=null||!userName.isEmpty();
+//        if (userName == null || userName.isEmpty()) {
+//            return false;
+//        } else {
+//            return true;
+//        }
     }
 
     /**
