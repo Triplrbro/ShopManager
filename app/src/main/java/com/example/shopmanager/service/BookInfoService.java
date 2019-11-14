@@ -45,4 +45,13 @@ public class BookInfoService extends BaseService {
         BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
         bookInfoDao.insertOrReplace(bookInfo);
     }
+
+    /**
+     *  根据数量获取图书信息
+     */
+    public List<BookInfo> getNumBookInfo(int num){
+        BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
+        List<BookInfo> list = bookInfoDao.queryBuilder().limit(num).list();
+        return list;
+    }
 }

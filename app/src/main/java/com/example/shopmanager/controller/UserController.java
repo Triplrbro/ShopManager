@@ -42,11 +42,6 @@ public class UserController {
         String userName = sharedPreferencesUtil.getUserName();
         System.out.println("===========自动登录校验 userName "+userName);
         return userName!=null&&!userName.isEmpty();
-//        if (userName == null || userName.isEmpty()) {
-//            return false;
-//        } else {
-//            return true;
-//        }
     }
 
     /**
@@ -58,6 +53,8 @@ public class UserController {
         userInfo.setUserName(userName);
         userInfo.setPassWord(passWord);
         userService.insertOrChangeUser(userInfo);
+        SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
+        sharedPreferencesUtil.setUserName(userName);
     }
 
     /**

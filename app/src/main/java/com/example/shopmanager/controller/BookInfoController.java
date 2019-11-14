@@ -47,4 +47,12 @@ public class BookInfoController {
     public void setBookInfo(BookInfo bookInfo){
         bookInfoService.setBookInfo(bookInfo);
     }
+
+    /**
+     * 主页获取图书信息，最大6个
+     */
+    public List<BookInfo> getNum(){
+        List<BookInfo> numBookInfo = bookInfoService.getNumBookInfo(6);
+        return numBookInfo;
+    }
 }
