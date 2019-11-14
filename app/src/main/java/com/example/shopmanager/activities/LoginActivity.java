@@ -23,10 +23,8 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_login);
         userController = new UserController();
-
+        setContentView(R.layout.activity_login);
         initView();
     }
 
@@ -42,7 +40,7 @@ public class LoginActivity extends Activity {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
 
-                    }else {
+                    } else {
                         Toast.makeText(LoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
 
                     }

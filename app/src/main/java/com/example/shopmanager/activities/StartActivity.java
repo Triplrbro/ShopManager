@@ -24,16 +24,18 @@ public class StartActivity extends Activity {
         setContentView(R.layout.start_login);
         initDB();
         UserController userController = new UserController();
-//        if (userController.autoCheckUserAccess()){
-//            Intent intent = new Intent(this,MainActivity.class);
-//            startActivity(intent);
-//        }
+        // 如果有本地缓存，直接登录
+        if (userController.autoCheckUserAccess()) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+
         bt_login = findViewById(R.id.bt_login);
         bt_register = findViewById(R.id.bt_register);
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this,LoginActivity.class);
+                Intent intent = new Intent(StartActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -41,13 +43,13 @@ public class StartActivity extends Activity {
         bt_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(StartActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(StartActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });
     }
 
-    private void initDB(){
+    private void initDB() {
         BaseService.DBInit(this);
         SharedPreferencesUtil.init(this);
     }

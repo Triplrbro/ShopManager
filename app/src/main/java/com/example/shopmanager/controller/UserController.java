@@ -40,7 +40,8 @@ public class UserController {
     public boolean autoCheckUserAccess() {
         SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
         String userName = sharedPreferencesUtil.getUserName();
-        return userName!=null||!userName.isEmpty();
+        System.out.println("===========自动登录校验 userName "+userName);
+        return userName!=null&&!userName.isEmpty();
 //        if (userName == null || userName.isEmpty()) {
 //            return false;
 //        } else {

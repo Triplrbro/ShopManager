@@ -12,10 +12,11 @@ public class SharedPreferencesUtil {
 
     public static void init(Context context) {
         SharedPreferencesUtil.context = context;
+        sp = context.getSharedPreferences("setting", MODE_PRIVATE);;
     }
 
     //声明SharedPreferences，用来读取xml;
-    private static SharedPreferences sp;
+    private static SharedPreferences sp ;
     //声明SharedPreferences.Editor，用来修改xml里面的值。
     private static SharedPreferences.Editor ed;
 
@@ -25,16 +26,14 @@ public class SharedPreferencesUtil {
     //TODO:无SharedPreferences文件返回0
 
     private static String getBase(String key) {
-        sp = context.getSharedPreferences("setting", MODE_PRIVATE);
         return sp.getString(key,"0");
     }
 
 
     private static void setBase(String key, String inputValue) {
-        SharedPreferences setting = context.getSharedPreferences("setting", MODE_PRIVATE);
-        SharedPreferences.Editor edit = setting.edit();
+        SharedPreferences.Editor edit = sp.edit();
         edit.putString(key, inputValue);
-        edit.commit();
+        edit.apply();
     }
 
     /**
