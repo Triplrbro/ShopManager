@@ -22,12 +22,12 @@
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/bt_show_data_book"
-        android:text="显示图书信息"
+        android:text="查询图书信息"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/bt_remove_data_book"
-        android:text="清空图书信息"
+        android:text="删除"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button

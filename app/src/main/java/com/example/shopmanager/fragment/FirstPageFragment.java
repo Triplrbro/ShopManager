@@ -11,9 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shopmanager.R;
 import com.example.shopmanager.activities.BookDetailActivity;
+import com.example.shopmanager.manager.BookInfoManager;
 import com.example.shopmanager.utils.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -27,7 +29,7 @@ public class FirstPageFragment extends Fragment implements View.OnClickListener 
     private Banner bn_banner;
     private LinearLayout ll_type_first;
     private View ll_type_second;
-    private Button bt_test;
+    private RecyclerView rcv_bookList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +58,9 @@ public class FirstPageFragment extends Fragment implements View.OnClickListener 
 //                startActivity(intent);
             }
         });
+
+        BookInfoManager bookInfoManager = new BookInfoManager(getContext());
+        bookInfoManager.initRecycleItem(rcv_bookList);
     }
 
     private void initView() {
@@ -63,8 +68,8 @@ public class FirstPageFragment extends Fragment implements View.OnClickListener 
         bn_banner = fragment_firstPage.findViewById(R.id.bn_banner);
         ll_type_first = fragment_firstPage.findViewById(R.id.ll_type_first);
         ll_type_second = fragment_firstPage.findViewById(R.id.ll_type_second);
-        bt_test = fragment_firstPage.findViewById(R.id.bt_test);
-        bt_test.setOnClickListener(this);
+        rcv_bookList = fragment_firstPage.findViewById(R.id.rcv_bookList);
+
         ll_type_first.setOnClickListener(this);
         ll_type_second.setOnClickListener(this);
         bn_banner.setImageLoader(new GlideImageLoader());
@@ -80,11 +85,6 @@ public class FirstPageFragment extends Fragment implements View.OnClickListener 
             case R.id.ll_type_first:
                 Toast.makeText(getContext(), "a", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.bt_test:
-                Intent intent = new Intent(getContext(), BookDetailActivity.class);
-                startActivity(intent);
-                break;
-
         }
     }
 }

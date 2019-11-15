@@ -1,18 +1,80 @@
 package com.example.shopmanager.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.shopmanager.R;
+import com.example.shopmanager.controller.BookInfoController;
+import com.example.shopmanager.manager.BookInfoManager;
+import com.example.shopmanager.service.db.bean.BookInfo;
 
-public class BookDetailActivity extends Activity {
+import java.util.List;
+
+public class BookDetailActivity extends Activity implements View.OnClickListener {
+
+    private Long book_id;
+    private RelativeLayout rl_back;
+    private Button bt_back;
+    private ImageView im_detail_book;
+    private TextView tv_book_name;
+    private TextView tv_book_price;
+    private TextView tv_book_author;
+    private TextView tv_book_press;
+    private TextView tv_book_binding;
+    private TextView tv_book_score;
+    private BookInfoManager bookInfoManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailbooks);
+        Intent intent = getIntent();
+        book_id = intent.getLongExtra("book_id", 1);
 
+        Toast.makeText(this, book_id + "", Toast.LENGTH_SHORT).show();
+        bookInfoManager = new BookInfoManager(this);
+        setContentView(R.layout.activity_detailbooks);
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        BookInfo bookInfByCode = new BookInfoController().getBookInfoById(book_id);
+        tv_book_name.setText(bookInfByCode.getBookNmae());
+        tv_book_price.setText("￥"+bookInfByCode.getPrice());
+        tv_book_author.setText(tv_book_author.getText()+bookInfByCode.getAuthor());
+        tv_book_press.setText(tv_book_press.getText()+bookInfByCode.getPress());
+        tv_book_binding.setText(tv_book_binding.getText()+bookInfByCode.getBinding());
+        tv_book_score.setText(bookInfByCode.getCode());
+
+    }
+
+    private void initView() {
+        rl_back = findViewById(R.id.rl_back);
+        bt_back = findViewById(R.id.bt_back);
+        im_detail_book = findViewById(R.id.im_detail_book);
+        tv_book_name = findViewById(R.id.tv_book_name);
+        tv_book_price = findViewById(R.id.tv_book_price);
+        tv_book_author = findViewById(R.id.tv_book_author);
+        tv_book_press = findViewById(R.id.tv_book_press);
+        tv_book_binding = findViewById(R.id.tv_book_binding);
+        tv_book_score = findViewById(R.id.tv_book_score);
+        rl_back.bringToFront();
+        bt_back.bringToFront();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+
+        }
     }
 }

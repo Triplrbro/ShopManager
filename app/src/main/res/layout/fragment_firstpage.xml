@@ -3,63 +3,85 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.youth.banner.Banner
-        android:id="@+id/bn_banner"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
-<!--    <android.support.v4.widget.NestedScrollView-->
-<!--        android:id="@+id/sv_item"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent">-->
+        android:layout_height="match_parent">
 
-
-<!--    </android.support.v4.widget.NestedScrollView>-->
-
-    <LinearLayout
-        android:layout_below="@id/bn_banner"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/ll_type_first"
             android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="100dp">
-            <ImageView
-                android:background="@color/aquamarine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.youth.banner.Banner
+                android:id="@+id/bn_banner"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+            <!--    <android.support.v4.widget.NestedScrollView-->
+            <!--        android:id="@+id/sv_item"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="match_parent">-->
+
+
+            <!--    </android.support.v4.widget.NestedScrollView>-->
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name" />
-            <TextView
-                android:text="aaa"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_below="@id/bn_banner"
+                android:orientation="horizontal">
 
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/ll_type_second"
-            android:orientation="vertical"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="100dp">
-            <ImageView
-                android:background="@color/aquamarine"
+                <LinearLayout
+                    android:id="@+id/ll_type_first"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/aquamarine"
+                        android:contentDescription="@string/app_name" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="aaa" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_type_second"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/aquamarine"
+                        android:contentDescription="@string/app_name" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="aaa" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_bookList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:contentDescription="@string/app_name" />
-            <TextView
-                android:text="aaa"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                >
 
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
-    </LinearLayout>
-    <Button
-        android:id="@+id/bt_test"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

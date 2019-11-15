@@ -53,6 +53,7 @@
                     android:layout_marginTop="@dimen/margin_20" />
 
                 <TextView
+                    android:id="@+id/tv_book_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_10"
@@ -62,6 +63,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_book_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_20"
@@ -77,27 +79,30 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_book_author"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="作    者： 张超"
+                        android:text="作    者： "
+                        android:textSize="@dimen/textSize_20" />
+                    <TextView
+                        android:id="@+id/tv_book_press"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="出版社： "
                         android:textSize="@dimen/textSize_20" />
                     <TextView
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="出版社： 张超"
+                        android:text="出    版： "
                         android:textSize="@dimen/textSize_20" />
                     <TextView
+                        android:id="@+id/tv_book_binding"
                         android:layout_marginTop="5dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="出    版： 张超"
-                        android:textSize="@dimen/textSize_20" />
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="装    帧： 张超"
+                        android:text="装    帧： "
                         android:textSize="@dimen/textSize_20" />
 
                 </LinearLayout>

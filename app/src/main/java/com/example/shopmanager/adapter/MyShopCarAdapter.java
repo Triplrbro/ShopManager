@@ -1,4 +1,4 @@
-package com.example.shopmanager;
+package com.example.shopmanager.adapter;
 
 
 import android.content.Context;
@@ -11,13 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.example.shopmanager.R;
 import com.example.shopmanager.service.db.bean.ShoppingCart;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.ViewHolder> {
     private List<ShoppingCart> list;
