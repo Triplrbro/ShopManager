@@ -24,10 +24,14 @@ import com.example.shopmanager.R;
 import com.example.shopmanager.TestTwoService;
 import com.example.shopmanager.controller.BookInfoController;
 import com.example.shopmanager.controller.ShoppingCarController;
+import com.example.shopmanager.controller.UserController;
 import com.example.shopmanager.service.BaseService;
 import com.example.shopmanager.service.BookInfoService;
+import com.example.shopmanager.service.TrendsService;
 import com.example.shopmanager.service.db.bean.BookInfo;
 import com.example.shopmanager.service.db.bean.ShoppingCart;
+import com.example.shopmanager.service.db.bean.TrendsInfo;
+import com.example.shopmanager.service.db.bean.UserInfo;
 
 import java.util.List;
 
@@ -80,7 +84,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
     }
 
 
-    Handler handler = new Handler(){
+    Handler handler = new Handler() {
 
     };
 
@@ -102,7 +106,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 intent2.putExtra("from", "ActivityB");
                 Log.i("Kathy", "----------------------------------------------------------------------");
                 Log.i("Kathy", "ActivityB 执行 bindService");
-                bindService(intent2,conn,BIND_AUTO_CREATE);
+                bindService(intent2, conn, BIND_AUTO_CREATE);
                 break;
             case R.id.bt_show_data_book:
                 List<BookInfo> query = query();
@@ -117,18 +121,33 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.tv_cut_data_shop:
                 int i = shoppingCarController.cutShop(1L);
-                System.out.println("==========="+i);
+                System.out.println("===========" + i);
                 tv_show_data_book.setText(String.valueOf(i));
                 break;
             case R.id.bt_add_data_shop:
-                int i1 = shoppingCarController.addShop(1L);
-                tv_show_data_book.setText(String.valueOf(i1));
-                System.out.println("==========="+i1);
+//                int i1 = shoppingCarController.addShop(1L);
+//                tv_show_data_book.setText(String.valueOf(i1));
+//                System.out.println("==========="+i1);
+//                shoppingCarController.queryUserCarList()
+                System.out.println("==================" + UserController.getUserInfo().toString());
+
+//                ShoppingCarController shoppingCarController = new ShoppingCarController();
+//                List<ShoppingCart> shoppingCarts = shoppingCarController.queryUserCarList(UserController.getUserId());
+//                for (ShoppingCart shoppingCart:shoppingCarts){
+//                    System.out.println("=================="+shoppingCart.toString());
+//                }
+
+                TrendsService trendsService = new TrendsService();
+                List<TrendsInfo> trendsInfos = trendsService.queryAllTrendsInfo();
+                for (TrendsInfo trendsInfo : trendsInfos) {
+                    System.out.println("==================" + trendsInfo.toString());
+                }
+
                 break;
             case R.id.bt_insert_data_shop:
                 ShoppingCart shoppingCart = new ShoppingCart(null, 1L, 1L, 1, false);
-                shoppingCarController.setShoppingCarOnce(shoppingCart);
-                System.out.println("============="+shoppingCart.toString());
+                this.shoppingCarController.setShoppingCarOnce(shoppingCart);
+                System.out.println("=============" + shoppingCart.toString());
                 tv_show_data_book.setText(shoppingCart.toString());
                 break;
         }
@@ -171,7 +190,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
     private static ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder binder) {
-            TestTwoService.MyBinder myBinder = (TestTwoService.MyBinder)binder;
+            TestTwoService.MyBinder myBinder = (TestTwoService.MyBinder) binder;
             TestTwoService service = myBinder.getService();
             Log.i("Kathy", "ActivityB - onServiceConnected");
             int num = service.getRandomNumber();
@@ -185,7 +204,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
     };
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         this.unbindService(conn);
         Log.i("Kathy", "ActivityB - onDestroy");

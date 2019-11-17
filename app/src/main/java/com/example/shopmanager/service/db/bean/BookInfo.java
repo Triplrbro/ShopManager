@@ -13,7 +13,7 @@ import org.greenrobot.greendao.annotation.Generated;
 public class BookInfo {
 
     @Id(autoincrement = true)
-    Long _id;
+    private Long _id;
 
     // 图书编码
     private String code;

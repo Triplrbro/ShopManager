@@ -106,4 +106,16 @@ public class UserInfo {
     }
 
 
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "_id=" + _id +
+                ", userPhoto='" + userPhoto + '\'' +
+                ", account='" + account + '\'' +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", userName='" + userName + '\'' +
+                ", passWord='" + passWord + '\'' +
+                '}';
+    }
 }

@@ -24,8 +24,8 @@ public class ShoppingCart {
     // 书籍ID
     private Long bookId; // 新增的，外键
     //设置一对一关联，连接属性是cardId
-    @ToOne(joinProperty ="bookId") // 注意该参数的值
-    private BookInfo bookInfo;       // 新增的
+    @ToOne(joinProperty = "bookId") // 注意该参数的值
+    private BookInfo bookInfo;     // 新增的
 
     // 数量
     private int num;
@@ -176,7 +176,7 @@ public class ShoppingCart {
                 "_id=" + _id +
                 ", userId=" + userId +
                 ", bookId=" + bookId +
-                ", bookInfo=" + bookInfo +
+                ", bookInfo=" + bookInfo.toString() +
                 ", num=" + num +
                 ", deleSign=" + deleSign +
                 ", daoSession=" + daoSession +

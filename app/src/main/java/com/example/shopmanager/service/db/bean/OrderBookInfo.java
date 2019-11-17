@@ -17,7 +17,7 @@ import com.example.shopmanager.service.db.dao.OrderBookInfoDao;
 @Entity
 public class OrderBookInfo {
 
-    @Id
+    @Id(autoincrement = true)
     private Long _id;
 
     private Long bookId;

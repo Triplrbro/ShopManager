@@ -34,8 +34,8 @@ public class TrendsController {
     /**
      *  根据用户Id查询动态信息
      */
-    public TrendsInfo queryTrendsInfoById(Long userId){
-        TrendsInfo unique = trendsService.queryTrendsInfoById(userId);
+    public List<TrendsInfo>  queryTrendsInfoById(Long userId){
+        List<TrendsInfo>  unique = trendsService.queryTrendsInfoById(userId);
         return unique;
     }
 

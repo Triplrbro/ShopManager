@@ -23,7 +23,7 @@ import com.example.shopmanager.service.db.dao.OrderBookInfoDao;
 @Entity
 public class OrderInfo {
 
-    @Id
+    @Id(autoincrement = true)
     private Long _id;
 
     private String address;

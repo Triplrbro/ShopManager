@@ -50,7 +50,7 @@ public class OrderBookInfoDao extends AbstractDao<OrderBookInfo, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"ORDER_BOOK_INFO\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: _id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: _id
                 "\"BOOK_ID\" INTEGER," + // 1: bookId
                 "\"ORDER_INFO\" INTEGER);"); // 2: orderInfo
     }

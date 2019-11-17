@@ -46,7 +46,7 @@ public class OrderInfoDao extends AbstractDao<OrderInfo, Long> {
     public static void createTable(Database db, boolean ifNotExists) {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"ORDER_INFO\" (" + //
-                "\"_id\" INTEGER PRIMARY KEY ," + // 0: _id
+                "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: _id
                 "\"ADDRESS\" TEXT," + // 1: address
                 "\"PHONE\" TEXT," + // 2: phone
                 "\"PHOTO\" TEXT," + // 3: photo
