@@ -2,6 +2,7 @@ package com.example.shopmanager.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -17,6 +18,6 @@ public class AddShopActivity extends Activity {
     }
 
     private void initView() {
-
+        (TextView) findViewById(R.id.);
     }
 }

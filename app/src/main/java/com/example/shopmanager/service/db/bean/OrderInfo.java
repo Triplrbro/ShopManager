@@ -37,30 +37,19 @@ public class OrderInfo {
     // 用户id
     private Long userId;
 
-    //设置一对一关联，连接属性是userId
-    @ToOne(joinProperty ="userId") // 注意该参数的值
-    private UserInfo userInfo;
+    // 总价
+    private Double money;
 
-    @ToMany(referencedJoinProperty = "orderInfo")
-    private List<OrderBookInfo> orderBookInfoList;
-
-    /** Used to resolve relations */
-    @Generated(hash = 2040040024)
-    private transient DaoSession daoSession;
-
-    /** Used for active entity operations. */
-    @Generated(hash = 2087209612)
-    private transient OrderInfoDao myDao;
-
-    @Generated(hash = 1624904452)
+    @Generated(hash = 1610368688)
     public OrderInfo(Long _id, String address, String phone, String photo,
-            String time, Long userId) {
+            String time, Long userId, Double money) {
         this._id = _id;
         this.address = address;
         this.phone = phone;
         this.photo = photo;
         this.time = time;
         this.userId = userId;
+        this.money = money;
     }
 
     @Generated(hash = 1695813404)
@@ -115,109 +104,13 @@ public class OrderInfo {
         this.userId = userId;
     }
 
-    @Generated(hash = 2066097151)
-    private transient Long userInfo__resolvedKey;
-
-    /** To-one relationship, resolved on first access. */
-    @Generated(hash = 1827626095)
-    public UserInfo getUserInfo() {
-        Long __key = this.userId;
-        if (userInfo__resolvedKey == null || !userInfo__resolvedKey.equals(__key)) {
-            final DaoSession daoSession = this.daoSession;
-            if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
-            }
-            UserInfoDao targetDao = daoSession.getUserInfoDao();
-            UserInfo userInfoNew = targetDao.load(__key);
-            synchronized (this) {
-                userInfo = userInfoNew;
-                userInfo__resolvedKey = __key;
-            }
-        }
-        return userInfo;
+    public Double getMoney() {
+        return this.money;
     }
 
-    /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1769423228)
-    public void setUserInfo(UserInfo userInfo) {
-        synchronized (this) {
-            this.userInfo = userInfo;
-            userId = userInfo == null ? null : userInfo.get_id();
-            userInfo__resolvedKey = userId;
-        }
+    public void setMoney(Double money) {
+        this.money = money;
     }
 
-    /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
-     * Entity must attached to an entity context.
-     */
-    @Generated(hash = 128553479)
-    public void delete() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.delete(this);
-    }
-
-    /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
-     * Entity must attached to an entity context.
-     */
-    @Generated(hash = 1942392019)
-    public void refresh() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.refresh(this);
-    }
-
-    /**
-     * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
-     * Entity must attached to an entity context.
-     */
-    @Generated(hash = 713229351)
-    public void update() {
-        if (myDao == null) {
-            throw new DaoException("Entity is detached from DAO context");
-        }
-        myDao.update(this);
-    }
-
-    /** called by internal mechanisms, do not call yourself. */
-    @Generated(hash = 1732476797)
-    public void __setDaoSession(DaoSession daoSession) {
-        this.daoSession = daoSession;
-        myDao = daoSession != null ? daoSession.getOrderInfoDao() : null;
-    }
-
-    /**
-     * To-many relationship, resolved on first access (and after reset).
-     * Changes to to-many relations are not persisted, make changes to the target entity.
-     */
-    @Generated(hash = 79364959)
-    public List<OrderBookInfo> getOrderBookInfoList() {
-        if (orderBookInfoList == null) {
-            final DaoSession daoSession = this.daoSession;
-            if (daoSession == null) {
-                throw new DaoException("Entity is detached from DAO context");
-            }
-            OrderBookInfoDao targetDao = daoSession.getOrderBookInfoDao();
-            List<OrderBookInfo> orderBookInfoListNew = targetDao
-                    ._queryOrderInfo_OrderBookInfoList(_id);
-            synchronized (this) {
-                if (orderBookInfoList == null) {
-                    orderBookInfoList = orderBookInfoListNew;
-                }
-            }
-        }
-        return orderBookInfoList;
-    }
-
-    /** Resets a to-many relationship, making the next get call to query for a fresh result. */
-    @Generated(hash = 632998510)
-    public synchronized void resetOrderBookInfoList() {
-        orderBookInfoList = null;
-    }
-
-
+  
 }
