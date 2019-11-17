@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //TODO:购物车，默认地址电话，userinfo修改
 
         fragmentManager = getFragmentManager();
         transaction = fragmentManager.beginTransaction();

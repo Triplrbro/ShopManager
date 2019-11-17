@@ -25,6 +25,7 @@
         <activity android:name=".activities.LoginActivity"/>
 
         <activity android:name=".activities.AddDataActivity"/>
+        <activity android:name=".activities.SendBBSActivity"/>
     </application>
 
 </manifest>

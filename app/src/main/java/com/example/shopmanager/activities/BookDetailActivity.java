@@ -14,8 +14,11 @@ import androidx.annotation.Nullable;
 
 import com.example.shopmanager.R;
 import com.example.shopmanager.controller.BookInfoController;
+import com.example.shopmanager.controller.ShoppingCarController;
 import com.example.shopmanager.manager.BookInfoManager;
+import com.example.shopmanager.service.ShoppingCarService;
 import com.example.shopmanager.service.db.bean.BookInfo;
+import com.example.shopmanager.service.db.bean.ShoppingCart;
 
 import java.util.List;
 
@@ -24,6 +27,8 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
     private Long book_id;
     private RelativeLayout rl_back;
     private Button bt_back;
+    private Button bt_add_shopcar;
+    private Button bt_goto_index;
     private ImageView im_detail_book;
     private TextView tv_book_name;
     private TextView tv_book_price;
@@ -67,14 +72,31 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         tv_book_press = findViewById(R.id.tv_book_press);
         tv_book_binding = findViewById(R.id.tv_book_binding);
         tv_book_score = findViewById(R.id.tv_book_score);
-        rl_back.bringToFront();
-        bt_back.bringToFront();
+        bt_add_shopcar = findViewById(R.id.bt_add_shopcar);
+        bt_goto_index = findViewById(R.id.bt_goto_index);
+        rl_back.setOnClickListener(this);
+        bt_back.setOnClickListener(this);
+        bt_add_shopcar.setOnClickListener(this);
+        bt_goto_index.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.bt_back:
+            case R.id.rl_back:
 
+                finish();
+                break;
+            case R.id.bt_goto_index:
+                finish();
+                break;
+            case R.id.bt_add_shopcar:
+                ShoppingCart queryShopCarInfo = new ShoppingCarService().queryShopCarOne(book_id);
+                new ShoppingCarController().setShoppingCarOnce(queryShopCarInfo);
+                Toast.makeText(this, "添加购物车成功", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 }
