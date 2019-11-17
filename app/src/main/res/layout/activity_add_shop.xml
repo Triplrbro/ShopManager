@@ -207,7 +207,7 @@
                 android:text="图书图片："
                 android:textSize="@dimen/textSize_15"
                 android:textStyle="bold" />
-            <EditText
+            <Button
                 android:text="获取图片"
                 android:id="@+id/bt_add_book_bookPhoto"
                 android:layout_width="match_parent"
@@ -218,6 +218,12 @@
         <ImageView
             android:id="@+id/iv_add_book_bookPhoto"
             android:layout_width="50dp"
+            android:layout_height="50dp"/>
+
+        <Button
+            android:id="@+id/bt_book_info_add_submit"
+            android:text="提交"
+            android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
     </LinearLayout>
