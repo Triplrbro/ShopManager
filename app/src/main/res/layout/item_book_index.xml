@@ -20,7 +20,19 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="101dp">
+        android:layout_marginStart="101dp"/>
+     <TextView
+        android:id="@+id/tv_book_author"
+         android:layout_below="@id/tv_book_name"
+        android:textSize="12dp"
+         android:textColor="@color/gray5"
+        android:textStyle="bold"
+         android:layout_marginTop="@dimen/margin_20"
+        android:text="作者："
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="101dp"/>
 
-    </TextView>
+
 </RelativeLayout>

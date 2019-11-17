@@ -43,12 +43,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <include layout="@layout/item_underline" />
-
-                <include layout="@layout/item_bbs" />
-
-                <include layout="@layout/item_bbs" />
-
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_bbs"
                     android:layout_width="match_parent"

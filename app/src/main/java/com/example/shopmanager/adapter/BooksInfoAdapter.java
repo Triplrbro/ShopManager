@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.activities.BookDetailActivity;
 import com.example.shopmanager.service.db.bean.BookInfo;
@@ -18,6 +19,8 @@ import com.example.shopmanager.service.db.bean.BookInfo;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.ViewHolder> {
     private List<BookInfo> list;
@@ -39,6 +42,9 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv_book_name.setText(list.get(position).getBookNmae());
+        holder.tv_book_author.setText(list.get(position).getAuthor());
+        System.out.println(list.get(position).getBookPhoto());
+        Glide.with(context).load(list.get(position).getBookPhoto()).bitmapTransform(new CropSquareTransformation(context)).into(holder.im_book);
     }
 
     @Override
@@ -49,6 +55,7 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView im_book;
         private final TextView tv_book_name;
+        private final TextView tv_book_author;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -56,6 +63,7 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
 
             im_book = itemView.findViewById(R.id.im_book);
             tv_book_name = itemView.findViewById(R.id.tv_book_name);
+            tv_book_author = itemView.findViewById(R.id.tv_book_author);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

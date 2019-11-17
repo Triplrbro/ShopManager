@@ -172,4 +172,18 @@ public class TrendsInfo {
         myDao = daoSession != null ? daoSession.getTrendsInfoDao() : null;
     }
 
+    @Override
+    public String toString() {
+        return "TrendsInfo{" +
+                "_id=" + _id +
+                ", userId=" + userId +
+                ", userInfo=" + userInfo +
+                ", bookId=" + bookId +
+                ", text='" + text + '\'' +
+                ", photoPath='" + photoPath + '\'' +
+                ", daoSession=" + daoSession +
+                ", myDao=" + myDao +
+                ", userInfo__resolvedKey=" + userInfo__resolvedKey +
+                '}';
+    }
 }

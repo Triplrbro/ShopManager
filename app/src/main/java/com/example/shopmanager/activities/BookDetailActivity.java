@@ -12,15 +12,19 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.controller.BookInfoController;
 import com.example.shopmanager.controller.ShoppingCarController;
+import com.example.shopmanager.controller.UserController;
 import com.example.shopmanager.manager.BookInfoManager;
 import com.example.shopmanager.service.ShoppingCarService;
 import com.example.shopmanager.service.db.bean.BookInfo;
 import com.example.shopmanager.service.db.bean.ShoppingCart;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class BookDetailActivity extends Activity implements View.OnClickListener {
 
@@ -58,7 +62,9 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         tv_book_author.setText(tv_book_author.getText()+bookInfByCode.getAuthor());
         tv_book_press.setText(tv_book_press.getText()+bookInfByCode.getPress());
         tv_book_binding.setText(tv_book_binding.getText()+bookInfByCode.getBinding());
-        tv_book_score.setText(bookInfByCode.getCode());
+        tv_book_score.setText(bookInfByCode.getScore());
+        Glide.with(this).load(bookInfByCode.getBookPhoto()).bitmapTransform(new CropSquareTransformation(this)).into(im_detail_book);
+
 
     }
 
@@ -94,8 +100,8 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                 break;
             case R.id.bt_add_shopcar:
 
-//                new ShoppingCarController().setShoppingCarOnce(book_id,);
-//                Toast.makeText(this, "添加购物车成功", Toast.LENGTH_SHORT).show();
+                new ShoppingCarController().setShoppingCarOnce(book_id, UserController.getUserId());
+                Toast.makeText(this, "添加购物车成功", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
