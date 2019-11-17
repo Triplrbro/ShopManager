@@ -2,6 +2,7 @@ package com.example.shopmanager.controller;
 
 
 import com.example.shopmanager.service.ShoppingCarService;
+import com.example.shopmanager.service.db.bean.BookInfo;
 import com.example.shopmanager.service.db.bean.ShoppingCart;
 
 import java.util.List;
@@ -66,6 +67,14 @@ public class ShoppingCarController {
      */
     public void setShoppingCarOnce(ShoppingCart shoppingCarOnce){
         shoppingCarService.insertOrChange(shoppingCarOnce);
+    }
+
+    /**
+     *  增加商品条目
+     */
+    public void setShoppingCarOnce(Long bookId,Long userId){
+        ShoppingCart shoppingCart = new ShoppingCart(null, userId, bookId, 1, false);
+        setShoppingCarOnce(shoppingCart);
     }
 
     /**
