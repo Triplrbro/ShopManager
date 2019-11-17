@@ -37,7 +37,7 @@ public class TrendsService extends BaseService{
      *  根据用户Id查询动态信息
      */
     public List<TrendsInfo>  queryTrendsInfoById(Long userId){
-        List<TrendsInfo> unique = daoSession.getTrendsInfoDao().queryBuilder().where(TrendsInfoDao.Properties._id.eq(userId)).list();
+        List<TrendsInfo> unique = daoSession.getTrendsInfoDao().queryBuilder().where(TrendsInfoDao.Properties.UserId.eq(userId)).list();
         return unique;
     }
 
