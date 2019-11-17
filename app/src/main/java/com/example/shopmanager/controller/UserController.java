@@ -79,6 +79,16 @@ public class UserController {
     }
 
     /**
+     *  获取用户信息
+     */
+    public static UserInfo getUserInfo(){
+        Long userId = getUserId();
+        UserService userService = new UserService();
+        UserInfo userInfo = userService.queryUserInfoById(userId);
+        return userInfo;
+    }
+
+    /**
      *  获取用户Id
      */
     public static Long getUserId(){
