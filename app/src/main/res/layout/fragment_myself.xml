@@ -66,58 +66,61 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginTop="@dimen/margin_20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/margin_10">
-
+            android:paddingLeft="@dimen/margin_20"
+            android:paddingTop="@dimen/margin_20"
+            android:paddingRight="@dimen/margin_20"
+            >
 
             <LinearLayout
-                android:id="@+id/ll_myOrder"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="80dp"
                 android:orientation="horizontal"
-                android:padding="@dimen/margin_10">
-
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <LinearLayout
-                    android:id="@+id/sll_myOrder"
+                    android:id="@+id/ll_order"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1">
-
+                    android:layout_height="wrap_content">
                     <ImageView
-                        android:id="@+id/im_myOrder"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:id="@+id/iv_order"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_order" />
-
+                        android:src="@drawable/ic_jump_index"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
                     <TextView
-                        android:id="@+id/tv_myOrder"
+                        android:id="@+id/tv_order"
+                        android:layout_marginTop="5dp"
+                        android:text="订单"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/margin_10"
-                        android:text="我的订单"
-                        android:textColor="@color/gray0" />
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:src="@drawable/ic_right" />
-                    </RelativeLayout>
-
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
-            </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/ll_add_shop"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/iv_add_shop"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_jump_index"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+                    <TextView
+                        android:id="@+id/tv_add_shop"
+                        android:layout_marginTop="5dp"
+                        android:text="添加商品"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
 
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

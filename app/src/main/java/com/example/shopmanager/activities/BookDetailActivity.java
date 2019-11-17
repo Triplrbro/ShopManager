@@ -93,9 +93,9 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                 finish();
                 break;
             case R.id.bt_add_shopcar:
-                ShoppingCart queryShopCarInfo = new ShoppingCarService().queryShopCarOne(book_id);
-                new ShoppingCarController().setShoppingCarOnce(queryShopCarInfo);
-                Toast.makeText(this, "添加购物车成功", Toast.LENGTH_SHORT).show();
+
+//                new ShoppingCarController().setShoppingCarOnce(book_id,);
+//                Toast.makeText(this, "添加购物车成功", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

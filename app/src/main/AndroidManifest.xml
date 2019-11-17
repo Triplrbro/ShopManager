@@ -26,6 +26,7 @@
 
         <activity android:name=".activities.AddDataActivity"/>
         <activity android:name=".activities.SendBBSActivity"/>
+        <activity android:name=".activities.AddShopActivity"/>
         <service android:name=".TestTwoService"/>
 
     </application>
