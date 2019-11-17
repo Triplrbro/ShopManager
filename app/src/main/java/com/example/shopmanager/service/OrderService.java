@@ -42,5 +42,20 @@ public class OrderService extends BaseService{
     }
 
 
+    /**
+     * 查询订单详情
+     */
+    public OrderBookInfo queryOrderBookInfoById(Long id){
+        OrderBookInfoDao orderBookInfoDao = daoSession.getOrderBookInfoDao();
+        OrderBookInfo orderBookInfo = orderBookInfoDao.queryBuilder().where(OrderInfoDao.Properties._id.eq(id)).unique();
+        return orderBookInfo;
+    }
+
+    public OrderInfo queryOrderInfoById(Long id){
+        OrderInfoDao orderInfoDao = daoSession.getOrderInfoDao();
+        OrderInfo orderInfo = orderInfoDao.queryBuilder().where(OrderInfoDao.Properties._id.eq(id)).unique();
+        return orderInfo;
+    }
+
 
 }

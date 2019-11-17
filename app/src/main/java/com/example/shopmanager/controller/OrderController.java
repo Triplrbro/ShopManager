@@ -1,8 +1,8 @@
 package com.example.shopmanager.controller;
 
 import com.example.shopmanager.service.OrderService;
+import com.example.shopmanager.service.db.bean.OrderBookInfo;
 import com.example.shopmanager.service.db.bean.OrderInfo;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -43,4 +43,16 @@ public class OrderController {
         return orderInfo;
     }
 
+    /**
+     * 查询订单详情
+     */
+    public OrderBookInfo queryOrderBookInfoById(Long id){
+        OrderBookInfo orderBookInfo = orderService.queryOrderBookInfoById(id);
+        return orderBookInfo;
+    }
+
+    public OrderInfo queryOrderInfoById(Long id){
+        OrderInfo orderInfo = orderService.queryOrderInfoById(id);
+        return orderInfo ;
+    }
 }
