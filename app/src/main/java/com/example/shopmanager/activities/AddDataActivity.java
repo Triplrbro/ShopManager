@@ -1,18 +1,27 @@
 package com.example.shopmanager.activities;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.os.Message;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.shopmanager.R;
+import com.example.shopmanager.TestTwoService;
 import com.example.shopmanager.controller.BookInfoController;
 import com.example.shopmanager.controller.ShoppingCarController;
 import com.example.shopmanager.service.BaseService;
@@ -33,6 +42,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
     private Button tv_cut_data_shop;
     private Button bt_insert_data_shop;
     private Button bt_add_data_shop;
+    private Button bt_url_photo;
     private ShoppingCarController shoppingCarController;
 
     @Override
@@ -42,6 +52,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
 
         bookInfoController = new BookInfoController();
         shoppingCarController = new ShoppingCarController();
+
 
         initView();
     }
@@ -56,6 +67,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
         tv_cut_data_shop = (Button) findViewById(R.id.tv_cut_data_shop);
         bt_insert_data_shop = (Button) findViewById(R.id.bt_insert_data_shop);
         bt_add_data_shop = (Button) findViewById(R.id.bt_add_data_shop);
+        bt_url_photo = (Button) findViewById(R.id.bt_url_photo);
 
         bt_add_data_book.setOnClickListener(this);
         bt_remove_data_book.setOnClickListener(this);
@@ -64,8 +76,13 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
         tv_cut_data_shop.setOnClickListener(this);
         bt_insert_data_shop.setOnClickListener(this);
         bt_add_data_shop.setOnClickListener(this);
+        bt_url_photo.setOnClickListener(this);
     }
 
+
+    Handler handler = new Handler(){
+
+    };
 
     @Override
     public void onClick(View v) {
@@ -79,6 +96,13 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.bt_add_data_book:
                 testInsert();
+                break;
+            case R.id.bt_url_photo:
+                Intent intent2 = new Intent(this, TestTwoService.class);
+                intent2.putExtra("from", "ActivityB");
+                Log.i("Kathy", "----------------------------------------------------------------------");
+                Log.i("Kathy", "ActivityB 执行 bindService");
+                bindService(intent2,conn,BIND_AUTO_CREATE);
                 break;
             case R.id.bt_show_data_book:
                 List<BookInfo> query = query();
@@ -142,4 +166,29 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
             }
         }
     }
+
+
+    private static ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder binder) {
+            TestTwoService.MyBinder myBinder = (TestTwoService.MyBinder)binder;
+            TestTwoService service = myBinder.getService();
+            Log.i("Kathy", "ActivityB - onServiceConnected");
+            int num = service.getRandomNumber();
+            Log.i("Kathy", "ActivityB - getRandomNumber = " + num);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            Log.i("Kathy", "ActivityB - onServiceDisconnected");
+        }
+    };
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        this.unbindService(conn);
+        Log.i("Kathy", "ActivityB - onDestroy");
+    }
+
 }

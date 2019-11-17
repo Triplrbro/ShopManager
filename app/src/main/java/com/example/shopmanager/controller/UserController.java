@@ -28,6 +28,8 @@ public class UserController {
         } else {
             SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
             sharedPreferencesUtil.setUserName(userName);
+            String userId = String.valueOf(userInfo.get_id());
+            sharedPreferencesUtil.setUserId(userId);
             return true;
         }
     }
@@ -76,5 +78,14 @@ public class UserController {
         userService.insertOrChangeUser(userInfo);
     }
 
+    /**
+     *  获取用户Id
+     */
+    public static Long getUserId(){
+        SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
+        String userId = sharedPreferencesUtil.getUserId();
+        Long aLong = Long.valueOf(userId);
+        return aLong;
+    }
 
 }

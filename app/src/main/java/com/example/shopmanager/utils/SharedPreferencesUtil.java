@@ -21,6 +21,7 @@ public class SharedPreferencesUtil {
     private static SharedPreferences.Editor ed;
 
     private static String USER_NAME = "USER_NAME";
+    private static String USER_ID = "USER_ID";
 
 
     //TODO:无SharedPreferences文件返回0
@@ -50,6 +51,21 @@ public class SharedPreferencesUtil {
      */
     public void setUserName(String userName){
         setBase(USER_NAME, String.valueOf(userName));
+    }
+
+    /**
+     *  读取用户ID
+     */
+    public String getUserId(){
+        String userId = getBase(USER_ID);
+        return userId;
+    }
+
+    /**
+     *  设定用户Id
+     */
+    public void setUserId(String userId){
+        setBase(USER_ID, String.valueOf(userId));
     }
 
 }

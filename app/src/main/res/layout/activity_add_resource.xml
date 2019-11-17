@@ -32,18 +32,22 @@
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/bt_add_data_shop"
-        android:text="addShop"
+        android:text="增加购物车"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
         android:id="@+id/bt_insert_data_shop"
-        android:text="insertShop"
+        android:text="插入购物车信息"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
     <Button
         android:id="@+id/tv_cut_data_shop"
-        android:text="deleShop"
+        android:text="减少购物车信息"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/bt_url_photo"
+        android:text="网络获取图片"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
