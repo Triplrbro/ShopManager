@@ -41,17 +41,14 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
         fragment_myself = inflater.inflate(R.layout.fragment_myself, null);
 
         initView();
-        //TODO:个人评论RecyclerView拼装
 
-//        initData();
+        initData();
         return fragment_myself;
     }
 
     private void initData() {
 
-        //TODO:查询返回单人多条list
-//        TrendsInfo trendsInfo = new TrendsController().queryTrendsInfoById(UserController.getUserId());
-        List<TrendsInfo> trendsInfos = new TrendsController().queryAllTrendsInfo();
+        List<TrendsInfo> trendsInfos = new TrendsController().queryTrendsInfoById(UserController.getUserId());
         TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos,getContext());
         LinearLayoutManager manager = new LinearLayoutManager(getActivity()) {
             @Override

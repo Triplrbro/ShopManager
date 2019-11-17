@@ -37,7 +37,7 @@ public class BBSFragment extends Fragment {
 
         initView();
         //TODO:RecyclerView布局渲染方法
-//        initData();
+        initData();
 
 
         return fragment_brand;
