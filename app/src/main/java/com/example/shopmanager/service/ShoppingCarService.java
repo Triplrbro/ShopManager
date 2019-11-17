@@ -1,6 +1,7 @@
 package com.example.shopmanager.service;
 
 
+import com.example.shopmanager.service.db.bean.BookInfo;
 import com.example.shopmanager.service.db.bean.ShoppingCart;
 import com.example.shopmanager.service.db.dao.ShoppingCartDao;
 
@@ -50,6 +51,11 @@ public class ShoppingCarService  extends BaseService{
      */
     public List<ShoppingCart> queryUserCarList(Long userId){
         List<ShoppingCart> list = daoSession.getShoppingCartDao().queryBuilder().where(ShoppingCartDao.Properties.UserId.eq(userId)).list();
+        for (ShoppingCart shoppingCart : list){
+            BookInfoService bookInfoService = new BookInfoService();
+            BookInfo bookInfoById = bookInfoService.getBookInfoById(shoppingCart.getBookId());
+            shoppingCart.setBookInfo(bookInfoById);
+        }
         return list;
     }
 
