@@ -20,6 +20,7 @@ import com.example.shopmanager.Properties.Properties;
 import com.example.shopmanager.R;
 import com.example.shopmanager.activities.AddDataActivity;
 import com.example.shopmanager.activities.AddShopActivity;
+import com.example.shopmanager.activities.AddUserInfoActivity;
 import com.example.shopmanager.adapter.TrendsInfoAdapter;
 import com.example.shopmanager.controller.TrendsController;
 import com.example.shopmanager.controller.UserController;
@@ -96,7 +97,7 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.iv_userHead:
-                Intent intent2 = new Intent();
+                Intent intent2 = new Intent(getActivity(), AddUserInfoActivity.class);
                 startActivity(intent2);
                 break;
         }
