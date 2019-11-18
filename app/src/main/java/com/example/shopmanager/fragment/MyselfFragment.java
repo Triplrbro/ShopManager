@@ -96,7 +96,8 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent1);
                 break;
             case R.id.iv_userHead:
-                ChooseImageDialogUtil.showSelectSubmitDialog(getActivity());
+                Intent intent2 = new Intent();
+                startActivity(intent2);
                 break;
         }
     }
