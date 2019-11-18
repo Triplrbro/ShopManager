@@ -63,6 +63,7 @@
             android:layout_gravity="center">
 
             <Button
+                android:id="@+id/ll_add_shop"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
@@ -70,6 +71,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_shop_num"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="30dp"
@@ -87,6 +89,8 @@
             android:layout_gravity="center">
 
             <Button
+                android:id="@+id/ll_del_shop"
+
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"

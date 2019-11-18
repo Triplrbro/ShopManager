@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ import java.util.List;
 public class ShopFragment extends Fragment {
 
     private View fragment_shop;
+    private TextView tv_num_price;
     private ShoppingCarController shoppingCarController;
     private RecyclerView rv_shopcart;
 
@@ -32,10 +34,12 @@ public class ShopFragment extends Fragment {
         fragment_shop = inflater.inflate(R.layout.fragment_shop, null);
 
         rv_shopcart = fragment_shop.findViewById(R.id.rv_shopcart);
+        tv_num_price = fragment_shop.findViewById(R.id.tv_num_price);
         shoppingCarController = new ShoppingCarController();
         List<ShoppingCart> shoppingCarts = shoppingCarController.queryUserCarList(UserController.getUserId());
 
         MyShopCarAdapter myShopCarAdapter = new MyShopCarAdapter(getActivity(),shoppingCarts);
+        myShopCarAdapter.setTextView(tv_num_price);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity()) {
             @Override
             public boolean canScrollVertically() {
