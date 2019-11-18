@@ -14,11 +14,14 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.TestTwoService;
 import com.example.shopmanager.controller.BookInfoController;
 import com.example.shopmanager.service.db.bean.BookInfo;
 import com.example.shopmanager.utils.RealPathFromUriUtils;
+
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class AddShopActivity extends Activity implements View.OnClickListener {
 
@@ -109,7 +112,9 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
                 // 得到图片的全路径
                 uri = data.getData();
                 System.out.println("========= 图片地址： " + path);
-                iv_add_book_bookPhoto.setImageURI(uri);
+                String uriString = String.valueOf(uri);
+                Glide.with(this).load(uriString).bitmapTransform(new CropSquareTransformation(this)).into(iv_add_book_bookPhoto);
+
                 bt_add_book_bookPhoto.setText(path);
             }
         }

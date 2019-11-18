@@ -53,7 +53,7 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
     private void initData() {
 
         List<TrendsInfo> trendsInfos = new TrendsController().queryTrendsInfoById(UserController.getUserId());
-        TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos, getContext());
+        TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos, getActivity());
         LinearLayoutManager manager = new LinearLayoutManager(getActivity()) {
             @Override
             public boolean canScrollVertically() {

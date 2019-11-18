@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.TestTwoService;
 import com.example.shopmanager.controller.BookInfoController;
@@ -32,8 +34,11 @@ import com.example.shopmanager.service.db.bean.BookInfo;
 import com.example.shopmanager.service.db.bean.ShoppingCart;
 import com.example.shopmanager.service.db.bean.TrendsInfo;
 import com.example.shopmanager.service.db.bean.UserInfo;
+import com.example.shopmanager.utils.SharedPreferencesUtil;
 
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
 public class AddDataActivity extends Activity implements View.OnClickListener {
     private Button bt_add_data_book;
@@ -81,6 +86,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
         bt_insert_data_shop.setOnClickListener(this);
         bt_add_data_shop.setOnClickListener(this);
         bt_url_photo.setOnClickListener(this);
+
     }
 
 
@@ -97,6 +103,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
                 startActivityForResult(intent, 2);
                 System.out.println("=========获取图片");
+
                 break;
             case R.id.bt_add_data_book:
                 testInsert();
@@ -180,8 +187,13 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 Uri uri = data.getData();
                 String path = uri.getPath();
                 System.out.println("========= 图片地址： " + path);
-                test_image.setImageURI(uri);
+//                test_image.setImageURI(uri);
                 tv_show_data_book.setText(path);
+//                SharedPreferencesUtil.setImage(String.valueOf(uri));
+//                String image = SharedPreferencesUtil.getImage();
+                Glide.with(this).load(String.valueOf(uri)).bitmapTransform(new CropSquareTransformation(this)).into(test_image);
+
+
             }
         }
     }

@@ -22,6 +22,7 @@ import com.example.shopmanager.controller.UserController;
 import com.example.shopmanager.service.db.bean.TrendsInfo;
 import com.example.shopmanager.utils.ChooseImageDialogUtil;
 import com.example.shopmanager.utils.RealPathFromUriUtils;
+import com.example.shopmanager.utils.SharedPreferencesUtil;
 
 import jp.wasabeef.glide.transformations.CropSquareTransformation;
 
@@ -31,7 +32,7 @@ public class SendBBSActivity extends Activity {
     private ImageView iv_send_bbs_img_selector;
     private Button bt_send_bbs;
     private Button bt_back;
-    private String path;
+    private String uriString;
     private Uri uri;
 
     @Override
@@ -51,10 +52,8 @@ public class SendBBSActivity extends Activity {
         if (et_send_bbs.getText().toString().trim().isEmpty()){
             return false;
         }else {
-            SharedPreferences sendContext = getSharedPreferences("sendContext", MODE_PRIVATE);
-            String send_img = sendContext.getString("SEND_IMG", "");
             trendsInfo.setText(et_send_bbs.getText().toString().trim());
-            trendsInfo.setPhotoPath(send_img);
+            trendsInfo.setPhotoPath(uriString);
             trendsInfo.setUserId(UserController.getUserId());
             trendsInfo.setUserInfo(UserController.getUserInfo());
             trendsController.insertOrChangeUser(trendsInfo);
@@ -102,7 +101,8 @@ public class SendBBSActivity extends Activity {
                 SharedPreferences sharedPreferences = this.getSharedPreferences("sendContext", MODE_PRIVATE);
                 SharedPreferences.Editor edit = sharedPreferences.edit();
                 uri = data.getData();
-                Glide.with(this).load(data.getData()).bitmapTransform(new CropSquareTransformation(this)).into(iv_send_bbs_img_selector);
+                uriString = String.valueOf(uri);
+                Glide.with(this).load(uriString).bitmapTransform(new CropSquareTransformation(this)).into(iv_send_bbs_img_selector);
                 edit.putString("SEND_IMG", String.valueOf(data.getData()));
                 edit.apply();
         }

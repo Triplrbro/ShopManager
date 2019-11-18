@@ -23,6 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropSquareTransformation;
+import jp.wasabeef.glide.transformations.CropTransformation;
 
 public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.ViewHolder> {
     private List<BookInfo> list;
@@ -45,7 +46,7 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv_book_name.setText(list.get(position).getBookNmae());
         holder.tv_book_author.setText(list.get(position).getAuthor());
-        Glide.with(context).load(list.get(position).getBookPhoto()).into(holder.im_book);
+        Glide.with(context).load(list.get(position).getBookPhoto()).bitmapTransform(new CropSquareTransformation(context)).into(holder.im_book);
     }
 
     @Override
