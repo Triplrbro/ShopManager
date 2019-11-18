@@ -38,7 +38,7 @@ public class ShoppingCarController {
      */
     public int cutShop(Long id){
         ShoppingCart shoppingCart = shoppingCarService.queryShopCarOne(id);
-        if (shoppingCart == null||shoppingCart.getNum()==0){
+        if (shoppingCart == null||shoppingCart.getNum() <=0||shoppingCart.getNum()==1){
             removeOneById(id);
             return 0;
         }else {
@@ -67,6 +67,12 @@ public class ShoppingCarController {
      *  增加商品条目
      */
     public void setShoppingCarOnce(ShoppingCart shoppingCarOnce){
+        ShoppingCart shoppingCart = shoppingCarService.queryShopCarOneByBookId(shoppingCarOnce.getBookId());
+        if (shoppingCart != null){
+            int i = shoppingCart.getNum() + 1;
+            shoppingCart.setNum(i);
+            shoppingCarOnce = shoppingCart;
+        }
         shoppingCarService.insertOrChange(shoppingCarOnce);
     }
 

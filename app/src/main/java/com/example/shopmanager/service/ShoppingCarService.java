@@ -45,6 +45,18 @@ public class ShoppingCarService  extends BaseService{
         return unique;
     }
 
+    /**
+     *  查询通过图书id
+     */
+    public ShoppingCart queryShopCarOneByBookId(Long id){
+        ShoppingCartDao shoppingCartDao = daoSession.getShoppingCartDao();
+        List<ShoppingCart> unique = shoppingCartDao.queryBuilder().where(ShoppingCartDao.Properties.BookId.eq(id)).list();
+        if (unique.size() > 0)
+        {
+            return unique.get(0);
+        }
+        return null;
+    }
 
     /**
      *  查询用户的购物车
