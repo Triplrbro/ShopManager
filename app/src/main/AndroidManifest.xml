@@ -30,6 +30,7 @@
         <activity android:name=".activities.AddDataActivity"/>
         <activity android:name=".activities.SendBBSActivity"/>
         <activity android:name=".activities.AddShopActivity"/>
+        <activity android:name=".activities.AddUserInfoActivity"/>
         <service android:name=".TestTwoService"/>
 
         <provider
