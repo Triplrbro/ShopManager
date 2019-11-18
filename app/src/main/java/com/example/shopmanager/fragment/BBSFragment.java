@@ -45,7 +45,7 @@ public class BBSFragment extends Fragment {
 
     private void initData() {
         List<TrendsInfo> trendsInfos = new TrendsController().queryAllTrendsInfo();
-        TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos,getContext());
+        TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos,getActivity());
         LinearLayoutManager manager = new LinearLayoutManager(getActivity()) {
             @Override
             public boolean canScrollVertically() {

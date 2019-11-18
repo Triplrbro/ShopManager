@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.shopmanager.Properties.Properties;
 import com.example.shopmanager.R;
 import com.example.shopmanager.activities.AddDataActivity;
 import com.example.shopmanager.activities.AddShopActivity;
@@ -22,6 +24,7 @@ import com.example.shopmanager.adapter.TrendsInfoAdapter;
 import com.example.shopmanager.controller.TrendsController;
 import com.example.shopmanager.controller.UserController;
 import com.example.shopmanager.service.db.bean.TrendsInfo;
+import com.example.shopmanager.utils.ChooseImageDialogUtil;
 
 import java.util.List;
 
@@ -34,6 +37,7 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
     private ImageView iv_order;
     private TextView tv_order;
     private RecyclerView rv_my_bbs;
+    private ImageView iv_userHead;
 
     @Nullable
     @Override
@@ -49,7 +53,7 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
     private void initData() {
 
         List<TrendsInfo> trendsInfos = new TrendsController().queryTrendsInfoById(UserController.getUserId());
-        TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos,getContext());
+        TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos, getContext());
         LinearLayoutManager manager = new LinearLayoutManager(getActivity()) {
             @Override
             public boolean canScrollVertically() {
@@ -70,6 +74,9 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
         iv_order = fragment_myself.findViewById(R.id.iv_order);
         tv_order = fragment_myself.findViewById(R.id.tv_order);
         rv_my_bbs = fragment_myself.findViewById(R.id.rv_my_bbs);
+        iv_userHead = fragment_myself.findViewById(R.id.iv_userHead);
+
+        iv_userHead.setOnClickListener(this);
         bt_set.setOnClickListener(this);
         iv_order.setOnClickListener(this);
         ll_order.setOnClickListener(this);
@@ -77,7 +84,7 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.bt_set:
                 Intent intent = new Intent(getContext(), AddDataActivity.class);
                 startActivity(intent);
@@ -85,10 +92,24 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
             case R.id.ll_order:
             case R.id.iv_order:
             case R.id.tv_order:
-                //TODO:添加跳转添加商品页面
                 Intent intent1 = new Intent(getContext(), AddShopActivity.class);
                 startActivity(intent1);
                 break;
+            case R.id.iv_userHead:
+                ChooseImageDialogUtil.showSelectSubmitDialog(getActivity());
+                break;
         }
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode) {
+            case Properties.FROM_GALLERY:
+                if (resultCode == -1) {
+                    Glide.with(getActivity()).load(data.getData()).into(iv_userHead);
+                }
+        }
+    }
+
 }
+

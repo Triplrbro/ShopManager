@@ -2,6 +2,7 @@ package com.example.shopmanager.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -14,15 +15,15 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
+import com.example.shopmanager.Properties.Properties;
 import com.example.shopmanager.R;
-import com.example.shopmanager.controller.BookInfoController;
 import com.example.shopmanager.controller.TrendsController;
 import com.example.shopmanager.controller.UserController;
 import com.example.shopmanager.service.db.bean.TrendsInfo;
-import com.example.shopmanager.utils.GlideCircleTransform;
+import com.example.shopmanager.utils.ChooseImageDialogUtil;
+import com.example.shopmanager.utils.RealPathFromUriUtils;
 
 import jp.wasabeef.glide.transformations.CropSquareTransformation;
-import jp.wasabeef.glide.transformations.CropTransformation;
 
 public class SendBBSActivity extends Activity {
 
@@ -31,6 +32,7 @@ public class SendBBSActivity extends Activity {
     private Button bt_send_bbs;
     private Button bt_back;
     private String path;
+    private Uri uri;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,11 +48,13 @@ public class SendBBSActivity extends Activity {
         TrendsInfo trendsInfo = new TrendsInfo();
         TrendsController trendsController = new TrendsController();
 
-        if (et_send_bbs.getText().toString().trim().isEmpty()||path.isEmpty()){
+        if (et_send_bbs.getText().toString().trim().isEmpty()){
             return false;
         }else {
+            SharedPreferences sendContext = getSharedPreferences("sendContext", MODE_PRIVATE);
+            String send_img = sendContext.getString("SEND_IMG", "");
             trendsInfo.setText(et_send_bbs.getText().toString().trim());
-            trendsInfo.setPhotoPath(path);
+            trendsInfo.setPhotoPath(send_img);
             trendsInfo.setUserId(UserController.getUserId());
             trendsInfo.setUserInfo(UserController.getUserInfo());
             trendsController.insertOrChangeUser(trendsInfo);
@@ -84,24 +88,23 @@ public class SendBBSActivity extends Activity {
         iv_send_bbs_img_selector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, null);
-                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-                startActivityForResult(intent, 2);
+                ChooseImageDialogUtil.onlySelectImage(SendBBSActivity.this);
             }
         });
     }
 
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 2) {
-            // 从相册返回的数据
-            if (data != null) {
-                // 得到图片的全路径
-                Uri uri = data.getData();
-                path = uri.getPath();
-                System.out.println("========= 图片地址： " + path);
-                Glide.with(this).load(uri).bitmapTransform(new CropSquareTransformation(this)).into(iv_send_bbs_img_selector);
-            }
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case Properties.FROM_GALLERY:
+                SharedPreferences sharedPreferences = this.getSharedPreferences("sendContext", MODE_PRIVATE);
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                uri = data.getData();
+                Glide.with(this).load(data.getData()).bitmapTransform(new CropSquareTransformation(this)).into(iv_send_bbs_img_selector);
+                edit.putString("SEND_IMG", String.valueOf(data.getData()));
+                edit.apply();
         }
     }
 }

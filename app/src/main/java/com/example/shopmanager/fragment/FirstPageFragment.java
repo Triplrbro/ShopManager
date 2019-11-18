@@ -59,7 +59,7 @@ public class FirstPageFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        BookInfoManager bookInfoManager = new BookInfoManager(getContext());
+        BookInfoManager bookInfoManager = new BookInfoManager(getActivity());
         bookInfoManager.initRecycleItem(rcv_bookList);
     }
 

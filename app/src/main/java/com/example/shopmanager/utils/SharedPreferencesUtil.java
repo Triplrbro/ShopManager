@@ -2,6 +2,7 @@ package com.example.shopmanager.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -22,6 +23,8 @@ public class SharedPreferencesUtil {
 
     private static String USER_NAME = "USER_NAME";
     private static String USER_ID = "USER_ID";
+    private static String IMG = "IMG";
+
 
 
     //TODO:无SharedPreferences文件返回0
@@ -67,5 +70,9 @@ public class SharedPreferencesUtil {
     public void setUserId(String userId){
         setBase(USER_ID, String.valueOf(userId));
     }
+
+//    public void setImage(Uri image){
+//        setBase(IMG,image);
+//    }
 
 }

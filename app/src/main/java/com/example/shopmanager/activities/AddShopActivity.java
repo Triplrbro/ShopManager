@@ -18,6 +18,7 @@ import com.example.shopmanager.R;
 import com.example.shopmanager.TestTwoService;
 import com.example.shopmanager.controller.BookInfoController;
 import com.example.shopmanager.service.db.bean.BookInfo;
+import com.example.shopmanager.utils.RealPathFromUriUtils;
 
 public class AddShopActivity extends Activity implements View.OnClickListener {
 
@@ -35,6 +36,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
     private ImageView iv_add_book_bookPhoto;
     private BookInfoController bookInfoController;
     private String path = "";
+    private Uri uri;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,7 +90,8 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
                 if (path.equals("")) {
                     Toast.makeText(this, "请选择图片", Toast.LENGTH_SHORT).show();
                 }
-                BookInfo bookInfo = new BookInfo(null, code, bookName, price, oldPrice, author, press, binding, score, contents, path);
+                BookInfo bookInfo = new BookInfo(null, code, bookName, price, oldPrice, author, press, binding, score, contents, RealPathFromUriUtils.getRealPathFromUri(this,uri));
+                System.out.println("RealPathFromUriUtils"+ RealPathFromUriUtils.getRealPathFromUri(this,uri));
                 bookInfoController.setBookInfo(bookInfo);
                 System.out.println("==================" + bookInfo.toString());
                 Toast.makeText(this, "商品信息添加完成！", Toast.LENGTH_SHORT).show();
@@ -104,8 +107,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
             // 从相册返回的数据
             if (data != null) {
                 // 得到图片的全路径
-                Uri uri = data.getData();
-                path = uri.getPath();
+                uri = data.getData();
                 System.out.println("========= 图片地址： " + path);
                 iv_add_book_bookPhoto.setImageURI(uri);
                 bt_add_book_bookPhoto.setText(path);

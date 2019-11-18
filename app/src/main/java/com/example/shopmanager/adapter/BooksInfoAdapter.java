@@ -2,6 +2,7 @@ package com.example.shopmanager.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.activities.BookDetailActivity;
 import com.example.shopmanager.service.db.bean.BookInfo;
+import com.example.shopmanager.utils.RealPathFromUriUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,8 +45,7 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv_book_name.setText(list.get(position).getBookNmae());
         holder.tv_book_author.setText(list.get(position).getAuthor());
-        System.out.println(list.get(position).getBookPhoto());
-        Glide.with(context).load(list.get(position).getBookPhoto()).bitmapTransform(new CropSquareTransformation(context)).into(holder.im_book);
+        Glide.with(context).load(list.get(position).getBookPhoto()).into(holder.im_book);
     }
 
     @Override

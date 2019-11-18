@@ -13,6 +13,7 @@ import com.example.shopmanager.fragment.FirstPageFragment;
 import com.example.shopmanager.service.BaseService;
 import com.example.shopmanager.service.BookInfoService;
 import com.example.shopmanager.service.db.bean.BookInfo;
+import com.example.shopmanager.utils.PermissionUtil;
 import com.example.shopmanager.utils.SharedPreferencesUtil;
 
 import java.util.List;
@@ -25,7 +26,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        PermissionUtil.requestPower(this, ((Activity) this), "android.permission.WRITE_EXTERNAL_STORAGE");
+        PermissionUtil.requestPower(this, ((Activity) this), "android.permission.INTERNET");
         //TODO:购物车，默认地址电话，userinfo修改
 
         fragmentManager = getFragmentManager();
