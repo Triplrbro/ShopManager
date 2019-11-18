@@ -28,6 +28,7 @@ public class ShoppingCarController {
         }else {
             shoppingCart.setNum(shoppingCart.getNum()+1);
         }
+        shoppingCarService.insertOrChange(shoppingCart);
         int i = queryShopNum(id);
         return i;
     }
@@ -43,6 +44,7 @@ public class ShoppingCarController {
         }else {
             shoppingCart.setNum(shoppingCart.getNum() - 1);
         }
+        shoppingCarService.insertOrChange(shoppingCart);
         int i = queryShopNum(id);
         return i;
     }
@@ -53,7 +55,6 @@ public class ShoppingCarController {
     public List<ShoppingCart> queryUserCarList(Long userId){
         List<ShoppingCart> shoppingCarList = shoppingCarService.queryUserCarList(userId);
         return shoppingCarList;
-
     }
 
     private int queryShopNum(Long id){
