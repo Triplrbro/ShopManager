@@ -11,6 +11,8 @@ import org.greenrobot.greendao.internal.SqlUtils;
 import org.greenrobot.greendao.internal.DaoConfig;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.database.DatabaseStatement;
+import org.greenrobot.greendao.query.Query;
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import com.example.shopmanager.service.db.bean.BookInfo;
 
@@ -33,11 +35,12 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
         public final static Property UserId = new Property(1, Long.class, "userId", false, "USER_ID");
         public final static Property BookId = new Property(2, Long.class, "bookId", false, "BOOK_ID");
         public final static Property Num = new Property(3, int.class, "num", false, "NUM");
-        public final static Property DeleSign = new Property(4, boolean.class, "deleSign", false, "DELE_SIGN");
+        public final static Property OrderSettlementInfoId = new Property(4, long.class, "orderSettlementInfoId", false, "ORDER_SETTLEMENT_INFO_ID");
     }
 
     private DaoSession daoSession;
 
+    private Query<ShoppingCart> orderSettlementInfo_ShoppingCartListQuery;
 
     public ShoppingCartDao(DaoConfig config) {
         super(config);
@@ -56,7 +59,7 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
                 "\"USER_ID\" INTEGER," + // 1: userId
                 "\"BOOK_ID\" INTEGER," + // 2: bookId
                 "\"NUM\" INTEGER NOT NULL ," + // 3: num
-                "\"DELE_SIGN\" INTEGER NOT NULL );"); // 4: deleSign
+                "\"ORDER_SETTLEMENT_INFO_ID\" INTEGER NOT NULL );"); // 4: orderSettlementInfoId
     }
 
     /** Drops the underlying database table. */
@@ -84,7 +87,7 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
             stmt.bindLong(3, bookId);
         }
         stmt.bindLong(4, entity.getNum());
-        stmt.bindLong(5, entity.getDeleSign() ? 1L: 0L);
+        stmt.bindLong(5, entity.getOrderSettlementInfoId());
     }
 
     @Override
@@ -106,7 +109,7 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
             stmt.bindLong(3, bookId);
         }
         stmt.bindLong(4, entity.getNum());
-        stmt.bindLong(5, entity.getDeleSign() ? 1L: 0L);
+        stmt.bindLong(5, entity.getOrderSettlementInfoId());
     }
 
     @Override
@@ -127,7 +130,7 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // userId
             cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2), // bookId
             cursor.getInt(offset + 3), // num
-            cursor.getShort(offset + 4) != 0 // deleSign
+            cursor.getLong(offset + 4) // orderSettlementInfoId
         );
         return entity;
     }
@@ -138,7 +141,7 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
         entity.setUserId(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
         entity.setBookId(cursor.isNull(offset + 2) ? null : cursor.getLong(offset + 2));
         entity.setNum(cursor.getInt(offset + 3));
-        entity.setDeleSign(cursor.getShort(offset + 4) != 0);
+        entity.setOrderSettlementInfoId(cursor.getLong(offset + 4));
      }
     
     @Override
@@ -166,6 +169,20 @@ public class ShoppingCartDao extends AbstractDao<ShoppingCart, Long> {
         return true;
     }
     
+    /** Internal query to resolve the "shoppingCartList" to-many relationship of OrderSettlementInfo. */
+    public List<ShoppingCart> _queryOrderSettlementInfo_ShoppingCartList(long orderSettlementInfoId) {
+        synchronized (this) {
+            if (orderSettlementInfo_ShoppingCartListQuery == null) {
+                QueryBuilder<ShoppingCart> queryBuilder = queryBuilder();
+                queryBuilder.where(Properties.OrderSettlementInfoId.eq(null));
+                orderSettlementInfo_ShoppingCartListQuery = queryBuilder.build();
+            }
+        }
+        Query<ShoppingCart> query = orderSettlementInfo_ShoppingCartListQuery.forCurrentThread();
+        query.setParameter(0, orderSettlementInfoId);
+        return query.list();
+    }
+
     private String selectDeep;
 
     protected String getSelectDeep() {

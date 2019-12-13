@@ -102,7 +102,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 System.out.println("==========="+i1);
                 break;
             case R.id.bt_insert_data_shop:
-                ShoppingCart shoppingCart = new ShoppingCart(null, 1L, 1L, 1, false);
+                ShoppingCart shoppingCart = new ShoppingCart(null, 1L, 1L, 1, 0L);
                 shoppingCarController.setShoppingCarOnce(shoppingCart);
                 System.out.println("============="+shoppingCart.toString());
                 tv_show_data_book.setText(shoppingCart.toString());

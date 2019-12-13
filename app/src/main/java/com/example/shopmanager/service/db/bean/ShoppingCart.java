@@ -30,8 +30,8 @@ public class ShoppingCart {
     // 数量
     private int num;
 
-    // 删除标记  可用于判断是否在回收站
-    private boolean deleSign;
+    // OrderSettlementInfoId  可用于判断是否在回收站
+    private long  orderSettlementInfoId;
 
     /** Used to resolve relations */
     @Generated(hash = 2040040024)
@@ -41,14 +41,14 @@ public class ShoppingCart {
     @Generated(hash = 657826810)
     private transient ShoppingCartDao myDao;
 
-    @Generated(hash = 1509434161)
+    @Generated(hash = 1299731385)
     public ShoppingCart(Long _id, Long userId, Long bookId, int num,
-            boolean deleSign) {
+            long orderSettlementInfoId) {
         this._id = _id;
         this.userId = userId;
         this.bookId = bookId;
         this.num = num;
-        this.deleSign = deleSign;
+        this.orderSettlementInfoId = orderSettlementInfoId;
     }
 
     @Generated(hash = 629579973)
@@ -87,12 +87,12 @@ public class ShoppingCart {
         this.num = num;
     }
 
-    public boolean getDeleSign() {
-        return this.deleSign;
+    public long getOrderSettlementInfoId() {
+        return this.orderSettlementInfoId;
     }
 
-    public void setDeleSign(boolean deleSign) {
-        this.deleSign = deleSign;
+    public void setOrderSettlementInfoId(long orderSettlementInfoId) {
+        this.orderSettlementInfoId = orderSettlementInfoId;
     }
 
     @Generated(hash = 1374280833)
@@ -170,18 +170,4 @@ public class ShoppingCart {
         myDao = daoSession != null ? daoSession.getShoppingCartDao() : null;
     }
 
-    @Override
-    public String toString() {
-        return "ShoppingCart{" +
-                "_id=" + _id +
-                ", userId=" + userId +
-                ", bookId=" + bookId +
-                ", bookInfo=" + bookInfo.toString() +
-                ", num=" + num +
-                ", deleSign=" + deleSign +
-                ", daoSession=" + daoSession +
-                ", myDao=" + myDao +
-                ", bookInfo__resolvedKey=" + bookInfo__resolvedKey +
-                '}';
-    }
 }

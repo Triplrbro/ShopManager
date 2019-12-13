@@ -74,7 +74,7 @@ public class ShoppingCarController {
      *  增加商品条目
      */
     public void setShoppingCarOnce(Long bookId,Long userId){
-        ShoppingCart shoppingCart = new ShoppingCart(null, userId, bookId, 1, false);
+        ShoppingCart shoppingCart = new ShoppingCart(null, userId, bookId, 1, 0L);
         setShoppingCarOnce(shoppingCart);
     }
 
