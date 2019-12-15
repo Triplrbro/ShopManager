@@ -46,7 +46,8 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv_book_name.setText(list.get(position).getBookNmae());
         holder.tv_book_author.setText(list.get(position).getAuthor());
-        Glide.with(context).load(list.get(position).getBookPhoto()).bitmapTransform(new CropSquareTransformation(context)).into(holder.im_book);
+        holder.tv_book_score.setText(holder.tv_book_score.getText()+list.get(position).getScore());
+        Glide.with(context).load(list.get(position).getBookPhoto()).bitmapTransform(new CropTransformation(context,1000,1300)).into(holder.im_book);
     }
 
     @Override
@@ -58,6 +59,7 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
         private final ImageView im_book;
         private final TextView tv_book_name;
         private final TextView tv_book_author;
+        private final TextView tv_book_score;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -66,6 +68,7 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
             im_book = itemView.findViewById(R.id.im_book);
             tv_book_name = itemView.findViewById(R.id.tv_book_name);
             tv_book_author = itemView.findViewById(R.id.tv_book_author);
+            tv_book_score = itemView.findViewById(R.id.tv_book_score);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

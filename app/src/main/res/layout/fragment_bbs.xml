@@ -19,7 +19,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:text="修改资料"
+                android:text="留言板"
                 android:textColor="@color/black"
                 android:textSize="15dp" />
 
@@ -34,6 +34,7 @@
 
         </RelativeLayout>
 
+        <include layout="@layout/item_underline"/>
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">

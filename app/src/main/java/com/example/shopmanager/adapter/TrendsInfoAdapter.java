@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.service.db.bean.TrendsInfo;
+import com.example.shopmanager.utils.GlideCircleTransform;
 import com.example.shopmanager.utils.SharedPreferencesUtil;
 
 import java.util.List;
@@ -44,7 +45,8 @@ public class TrendsInfoAdapter extends RecyclerView.Adapter<TrendsInfoAdapter.Vi
 //        Glide.with(context).load(list.get(position).getUserInfo().getUserPhoto()).bitmapTransform(new CropSquareTransformation(context)).into( holder.iv_bbs);
 //        Glide.with(context).load("https://img.alicdn.com/tfs/TB1PN9_ka61gK0jSZFlXXXDKFXa-860-80.png").bitmapTransform(new CropSquareTransformation(context)).into(holder.iv_bbs);
 
-        Glide.with(context).load(list.get(position).getPhotoPath()).into(holder.iv_bbs);
+        Glide.with(context).load(list.get(position).getPhotoPath()).bitmapTransform(new CropSquareTransformation(context)).into(holder.iv_bbs);
+        Glide.with(context).load(list.get(position).getUserInfo().getUserPhoto()).bitmapTransform(new GlideCircleTransform(context)).into(holder.iv_bbs_user);
 
         holder.tv_bbs.setText(list.get(position).getText());
         holder.tv_bbs_user.setText(list.get(position).getUserInfo().getUserName());

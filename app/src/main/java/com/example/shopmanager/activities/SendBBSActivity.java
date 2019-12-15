@@ -53,7 +53,7 @@ public class SendBBSActivity extends Activity {
             return false;
         }else {
             trendsInfo.setText(et_send_bbs.getText().toString().trim());
-            trendsInfo.setPhotoPath(uriString);
+            trendsInfo.setPhotoPath(RealPathFromUriUtils.getRealPathFromUri(this,uri));
             trendsInfo.setUserId(UserController.getUserId());
             trendsInfo.setUserInfo(UserController.getUserInfo());
             trendsController.insertOrChangeUser(trendsInfo);
@@ -87,7 +87,10 @@ public class SendBBSActivity extends Activity {
         iv_send_bbs_img_selector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChooseImageDialogUtil.onlySelectImage(SendBBSActivity.this);
+                Intent intent = new Intent(Intent.ACTION_PICK, null);
+                intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+                startActivityForResult(intent, 2);
+                System.out.println("=========获取图片");
             }
         });
     }
@@ -95,16 +98,16 @@ public class SendBBSActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode) {
-            case Properties.FROM_GALLERY:
-                SharedPreferences sharedPreferences = this.getSharedPreferences("sendContext", MODE_PRIVATE);
-                SharedPreferences.Editor edit = sharedPreferences.edit();
+
+        if (requestCode == 2) {
+            // 从相册返回的数据
+            if (data != null) {
+                // 得到图片的全路径
                 uri = data.getData();
-                uriString = String.valueOf(uri);
+                String uriString = String.valueOf(uri);
                 Glide.with(this).load(uriString).bitmapTransform(new CropSquareTransformation(this)).into(iv_send_bbs_img_selector);
-                edit.putString("SEND_IMG", String.valueOf(data.getData()));
-                edit.apply();
+
+            }
         }
     }
 }

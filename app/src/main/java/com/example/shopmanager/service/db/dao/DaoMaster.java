@@ -24,10 +24,10 @@ public class DaoMaster extends AbstractDaoMaster {
         BookInfoDao.createTable(db, ifNotExists);
         OrderBookInfoDao.createTable(db, ifNotExists);
         OrderInfoDao.createTable(db, ifNotExists);
+        OrderSettlementInfoDao.createTable(db, ifNotExists);
         ShoppingCartDao.createTable(db, ifNotExists);
         TrendsInfoDao.createTable(db, ifNotExists);
         UserInfoDao.createTable(db, ifNotExists);
-        OrderSettlementInfoDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
@@ -35,10 +35,10 @@ public class DaoMaster extends AbstractDaoMaster {
         BookInfoDao.dropTable(db, ifExists);
         OrderBookInfoDao.dropTable(db, ifExists);
         OrderInfoDao.dropTable(db, ifExists);
+        OrderSettlementInfoDao.dropTable(db, ifExists);
         ShoppingCartDao.dropTable(db, ifExists);
         TrendsInfoDao.dropTable(db, ifExists);
         UserInfoDao.dropTable(db, ifExists);
-        OrderSettlementInfoDao.dropTable(db, ifExists);
     }
 
     /**
@@ -60,10 +60,10 @@ public class DaoMaster extends AbstractDaoMaster {
         registerDaoClass(BookInfoDao.class);
         registerDaoClass(OrderBookInfoDao.class);
         registerDaoClass(OrderInfoDao.class);
+        registerDaoClass(OrderSettlementInfoDao.class);
         registerDaoClass(ShoppingCartDao.class);
         registerDaoClass(TrendsInfoDao.class);
         registerDaoClass(UserInfoDao.class);
-        registerDaoClass(OrderSettlementInfoDao.class);
     }
 
     public DaoSession newSession() {

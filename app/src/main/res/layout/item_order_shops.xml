@@ -1,27 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:paddingTop="@dimen/margin_10"
     android:id="@+id/rl_book_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <ImageView
         android:id="@+id/im_book"
-        android:layout_width="100dp"
-        android:layout_height="130dp"/>
+        android:layout_width="80dp"
+        android:layout_height="104dp"/>
 
     <TextView
         android:id="@+id/tv_book_name"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:textStyle="bold"
         android:text="万古江河"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="120dp"/>
-     <TextView
+        android:layout_marginStart="101dp"/>
+    <TextView
         android:id="@+id/tv_book_author"
         android:layout_below="@id/tv_book_name"
         android:textSize="15dp"
@@ -32,25 +31,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="120dp"/>
+        android:layout_marginStart="101dp"/>
+
     <TextView
-        android:id="@+id/tv_book_score"
-        android:layout_below="@id/tv_book_author"
-        android:textSize="15dp"
-        android:textColor="@color/star_gold"
-        android:textStyle="bold"
-        android:layout_marginTop="@dimen/margin_20"
-        android:text="评分："
+        android:id="@+id/tv_number"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/margin_20"
+        android:text="+1"
+        android:textColor="@color/gray8"
+        android:textSize="@dimen/textSize_25"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="120dp"/>
-
-    <include
-        android:layout_below="@id/im_book"
-        android:layout_marginTop="@dimen/margin_10"
-        android:layout_height="1dp"
-        android:layout_width="match_parent"
-        layout="@layout/item_underline"/>
-
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

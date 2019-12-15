@@ -27,7 +27,7 @@ public class BookInfoManager {
 
         List<BookInfo> bookInfoList = new BookInfoController().getBookInfoList();
         BooksInfoAdapter booksInfoAdapter = new BooksInfoAdapter(bookInfoList,context);
-        GridLayoutManager manager = new GridLayoutManager(context, 2) {
+        LinearLayoutManager manager = new LinearLayoutManager(context) {
             @Override
             public boolean canScrollVertically() {
                 return false;
