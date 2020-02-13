@@ -72,7 +72,7 @@ public class ShoppingCarService  extends BaseService{
     public List<ShoppingCart> queryUserCarList(Long userId){
         List<ShoppingCart> list = daoSession.getShoppingCartDao().queryBuilder()
                 .where(ShoppingCartDao.Properties.UserId.eq(userId))
-                .where(ShoppingCartDao.Properties.OrderSettlementInfoId.eq(null)).list();
+                .where(ShoppingCartDao.Properties.OrderSettlementInfoId.eq(0)).list();
         for (ShoppingCart shoppingCart : list){
             BookInfoService bookInfoService = new BookInfoService();
             BookInfo bookInfoById = bookInfoService.getBookInfoById(shoppingCart.getBookId());
