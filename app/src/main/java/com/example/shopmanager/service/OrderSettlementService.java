@@ -38,11 +38,29 @@ public class OrderSettlementService extends BaseService {
     }
 
     /**
+     *  更新订单信息
+     */
+    public void updateOrder( OrderSettlementInfo orderSettlementInfo){
+        // 插入订单信息
+        OrderSettlementInfoDao orderSettlementInfoDao = daoSession.getOrderSettlementInfoDao();
+        orderSettlementInfoDao.insertOrReplace(orderSettlementInfo);
+    }
+
+    /**
      *  根据用户id查询列表
      */
     public List<OrderSettlementInfo> queryOrderInfoList(Long userId){
         OrderSettlementInfoDao orderSettlementInfoDao = daoSession.getOrderSettlementInfoDao();
         List<OrderSettlementInfo> list = orderSettlementInfoDao.queryBuilder().where(OrderSettlementInfoDao.Properties.UserId.eq(userId)).list();
+        return list;
+    }
+
+    /**
+     *  根据状态查询列表
+     */
+    public List<OrderSettlementInfo> queryOrderInfoList(String  stateCode){
+        OrderSettlementInfoDao orderSettlementInfoDao = daoSession.getOrderSettlementInfoDao();
+        List<OrderSettlementInfo> list = orderSettlementInfoDao.queryBuilder().where(OrderSettlementInfoDao.Properties.State.eq(stateCode)).list();
         return list;
     }
 
