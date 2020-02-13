@@ -75,7 +75,7 @@ public class AdminManagerActivity extends Activity implements View.OnClickListen
                 finish();
                 //TODO 需要注销
                 break;
-            case R.id.tv_order:
+            case R.id.tv_order_manager:
                 rl_admin_manager.setVisibility(View.GONE);
                 rl_order_manager.setVisibility(View.VISIBLE);
                 rl_book_manager.setVisibility(View.GONE);
