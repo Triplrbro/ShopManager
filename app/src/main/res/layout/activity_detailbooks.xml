@@ -180,9 +180,18 @@
         <Button
             android:id="@+id/bt_collect"
             android:layout_marginLeft="20dp"
+            android:background="@drawable/ic_collect"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/v_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+        <Button
+            android:id="@+id/bt_collected"
+            android:layout_marginLeft="20dp"
             android:background="@drawable/ic_collected"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/v_view"
+            android:visibility="gone"
             android:layout_width="30dp"
             android:layout_height="30dp"/>
             <Button

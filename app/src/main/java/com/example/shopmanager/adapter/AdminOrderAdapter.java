@@ -4,10 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.controller.OrderSettlementController;
 import com.example.shopmanager.service.db.bean.OrderSettlementInfo;

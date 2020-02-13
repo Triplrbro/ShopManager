@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.activities.AddDataActivity;
+import com.example.shopmanager.activities.ChangeUserInfo;
+import com.example.shopmanager.activities.CollectedActivity;
 import com.example.shopmanager.activities.OrderListActivity;
 import com.example.shopmanager.adapter.TrendsInfoAdapter;
 import com.example.shopmanager.controller.TrendsController;
@@ -37,11 +39,19 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
     private View fragment_myself;
     private LinearLayout ll_userHead;
     private RelativeLayout ll_order;
+    private RelativeLayout ll_add_shop;
     private ImageView iv_order;
+    private ImageView iv_add_shop;
     private TextView tv_order;
     private RelativeLayout ll_set;
     private ImageView iv_set;
     private TextView tv_set;
+
+    private TextView tv_userName;
+    private TextView tv_user_id;
+    private TextView tv_user_description;
+
+
     private RecyclerView rv_my_bbs;
     private ImageView iv_userHead;
     private Uri uri;
@@ -55,6 +65,12 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
 
         initData();
         return fragment_myself;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initData();
     }
 
     private void initData() {
@@ -71,11 +87,21 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
         };
         manager.setOrientation(LinearLayoutManager.VERTICAL);
 
+
+        tv_userName.setText(userInfo.getUserName());
+        tv_user_description.setText(userInfo.getDescri());
+        tv_user_id.setText(String.valueOf(UserController.getUserId()));
+
         rv_my_bbs.setLayoutManager(manager);
         rv_my_bbs.setAdapter(trendsInfoAdapter);
     }
 
     private void initView() {
+
+
+        tv_userName = fragment_myself.findViewById(R.id.tv_userName);
+        tv_user_id = fragment_myself.findViewById(R.id.tv_user_id);
+        tv_user_description = fragment_myself.findViewById(R.id.tv_user_description);
 
 
         ll_set = fragment_myself.findViewById(R.id.ll_set);
@@ -84,6 +110,8 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
         ll_order = fragment_myself.findViewById(R.id.ll_order);
         iv_order = fragment_myself.findViewById(R.id.iv_order);
         tv_order = fragment_myself.findViewById(R.id.tv_order);
+        ll_add_shop = fragment_myself.findViewById(R.id.ll_add_shop);
+        iv_add_shop = fragment_myself.findViewById(R.id.iv_add_shop);
         rv_my_bbs = fragment_myself.findViewById(R.id.rv_my_bbs);
         iv_userHead = fragment_myself.findViewById(R.id.iv_userHead);
         iv_userHead.setOnLongClickListener(new View.OnLongClickListener() {
@@ -101,6 +129,8 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
         ll_set.setOnClickListener(this);
         iv_order.setOnClickListener(this);
         ll_order.setOnClickListener(this);
+        ll_add_shop.setOnClickListener(this);
+        iv_add_shop.setOnClickListener(this);
     }
 
     @Override
@@ -119,10 +149,14 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
                 Intent intent2 = new Intent(getContext(), OrderListActivity.class);
                 startActivity(intent2);
                 break;
+            case R.id.ll_add_shop:
+            case R.id.iv_add_shop:
+                Intent intent3 = new Intent(getContext(),CollectedActivity.class);
+                startActivity(intent3);
+                break;
             case R.id.iv_userHead:
-//                TODO:修改用户名页面实现
-//                Intent intent2 = new Intent(getContext());
-//                startActivity(intent2);
+                Intent intent1 = new Intent(getContext(), ChangeUserInfo.class);
+                startActivity(intent1);
                 break;
 
         }

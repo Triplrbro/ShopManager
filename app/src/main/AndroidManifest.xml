@@ -67,6 +67,12 @@
         <activity
             android:name=".activities.OrderListActivity"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.ChangeUserInfo"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.CollectedActivity"
+            android:launchMode="singleTask" />
 
         <service android:name=".TestTwoService" />
 
