@@ -28,4 +28,6 @@ public class CollectService extends BaseService {
         return unique;
     }
 
+    //.where(BookInfoDao.Properties.DeleSign.notEq(0))
+
 }
