@@ -63,6 +63,9 @@
         <activity
             android:name=".activities.BillActivity"
             android:launchMode="singleTask" />
+        <activity
+            android:name=".activities.OrderListActivity"
+            android:launchMode="singleTask" />
 
         <service android:name=".TestTwoService" />
 

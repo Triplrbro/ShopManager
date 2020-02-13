@@ -111,10 +111,12 @@ public class OrderActivity extends Activity implements View.OnClickListener {
     private void makeOrder(){
         OrderSettlementInfo orderSettlementInfo = new OrderSettlementInfo();
         orderSettlementInfo.resetShoppingCartList();
+        orderSettlementInfo.setUserId(UserController.getUserId());
         orderSettlementInfo.setAddress(tv_person_address.getText().toString().trim());
 //        orderSettlementInfo.setAllPrice();
         orderSettlementInfo.setName(tv_person_name.getText().toString().trim());
         orderSettlementInfo.setPhone(tv_person_phone.getText().toString().trim());
+        System.out.println(orderSettlementInfo.toString());
         new OrderSettlementController().makeOrder(orderSettlementInfo,UserController.getUserId());
     }
 

@@ -1,15 +1,16 @@
 package com.example.shopmanager.service.db.bean;
 
+import com.example.shopmanager.service.db.dao.DaoSession;
+import com.example.shopmanager.service.db.dao.OrderSettlementInfoDao;
+import com.example.shopmanager.service.db.dao.ShoppingCartDao;
+
+import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.ToMany;
 
 import java.util.List;
-import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.DaoException;
-import com.example.shopmanager.service.db.dao.DaoSession;
-import com.example.shopmanager.service.db.dao.ShoppingCartDao;
-import com.example.shopmanager.service.db.dao.OrderSettlementInfoDao;
 
 /**
  * 订单结算
@@ -194,4 +195,19 @@ public class OrderSettlementInfo {
         myDao = daoSession != null ? daoSession.getOrderSettlementInfoDao() : null;
     }
 
+    @Override
+    public String toString() {
+        return "OrderSettlementInfo{" +
+                "_id=" + _id +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", name='" + name + '\'' +
+                ", allPrice='" + allPrice + '\'' +
+                ", realityPrice='" + realityPrice + '\'' +
+                ", userId=" + userId +
+                ", shoppingCartList=" + shoppingCartList +
+                ", daoSession=" + daoSession +
+                ", myDao=" + myDao +
+                '}';
+    }
 }

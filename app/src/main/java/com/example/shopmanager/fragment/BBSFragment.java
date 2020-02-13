@@ -43,6 +43,12 @@ public class BBSFragment extends Fragment {
         return fragment_brand;
     }
 
+    @Override
+    public void onResume() {
+        initData();
+        super.onResume();
+    }
+
     private void initData() {
         List<TrendsInfo> trendsInfos = new TrendsController().queryAllTrendsInfo();
         TrendsInfoAdapter trendsInfoAdapter = new TrendsInfoAdapter(trendsInfos,getActivity());
