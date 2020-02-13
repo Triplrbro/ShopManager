@@ -107,4 +107,12 @@ public class UserController {
         return adminName.equals(userName) && adminPwd.equals(passWord);
     }
 
+    /**
+     *  清除用户信息
+     */
+    public static void clearUserId(){
+        SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
+        sharedPreferencesUtil.setUserId("");
+        sharedPreferencesUtil.setUserName("");
+    }
 }
