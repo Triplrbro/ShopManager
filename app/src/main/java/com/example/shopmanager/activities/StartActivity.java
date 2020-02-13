@@ -29,6 +29,7 @@ public class StartActivity extends Activity {
         if (userController.autoCheckUserAccessAdmin()) {
             Intent intent = new Intent(this, AdminManagerActivity.class);
             startActivity(intent);
+            return;
         }
         if (userController.autoCheckUserAccess()) {
             Intent intent = new Intent(this, MainActivity.class);

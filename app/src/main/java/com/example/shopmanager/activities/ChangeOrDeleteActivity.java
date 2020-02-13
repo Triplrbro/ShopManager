@@ -1,6 +1,8 @@
 package com.example.shopmanager.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -23,7 +25,7 @@ import com.example.shopmanager.service.db.bean.BookInfo;
 
 import java.util.List;
 
-public class ChangeOrDeleteActivity extends Activity implements View.OnClickListener, AdapterView.OnItemClickListener, OnItemClickListener {
+public class ChangeOrDeleteActivity extends Activity implements View.OnClickListener, OnItemClickListener {
 
     private TextView tv_title;
     private Button bt_back;
@@ -45,7 +47,11 @@ public class ChangeOrDeleteActivity extends Activity implements View.OnClickList
     private void initView() {
         tv_title = (TextView) findViewById(R.id.tv_title);
         bt_back = (Button) findViewById(R.id.bt_back);
+
         rv_change_or_delete_book = (RecyclerView) findViewById(R.id.rv_change_or_delete_book);
+        LinearLayoutManager layout = new LinearLayoutManager(this);
+        layout.setOrientation(GridLayoutManager.VERTICAL);
+        rv_change_or_delete_book.setLayoutManager(layout);
     }
 
     private void initData() {
@@ -56,10 +62,10 @@ public class ChangeOrDeleteActivity extends Activity implements View.OnClickList
         booksInfoAdapter = new BooksInfoAdapter(bookInfoList, this);
         if (from.equals("change")) {
             tv_title.setText("修改书籍信息");
-            rv_change_or_delete_book.setAdapter(booksInfoAdapter);
         } else {
             tv_title.setText("删除书籍信息");
         }
+        rv_change_or_delete_book.setAdapter(booksInfoAdapter);
     }
 
     private void setOnClickListener() {
@@ -77,35 +83,30 @@ public class ChangeOrDeleteActivity extends Activity implements View.OnClickList
     }
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+    public void onItemClick(View view, int position) {
         if (from.equals("change")) {
             Intent changeBook = new Intent(this, ChangeBookActivity.class);
             changeBook.putExtra("bookInfo", JSON.toJSON(new BookInfo(1l, "1", "1", "1", "1", "1", "1", "1", "1", "1", "1")).toString());
             startActivity(changeBook);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK);
+            builder.setTitle("删除书籍信息");
+            builder.setMessage("是否删除此书籍信息？");
+            builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
+            builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                }
+            });
             AlertDialog alertDialog = builder.create();
-            alertDialog.setTitle("删除书籍信息");
-            alertDialog.setMessage("是否删除此书籍信息？");
-            alertDialog.setButton("确认", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-
-                }
-            });
-            alertDialog.setButton("取消", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-
-                }
-            });
             alertDialog.show();
         }
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-
     }
 
     @Override

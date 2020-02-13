@@ -128,7 +128,7 @@ public class UserController {
     /**
      *  清除用户信息
      */
-    public static void clearUserId(){
+    public void clearUserId(){
         SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
         sharedPreferencesUtil.setUserId("");
         sharedPreferencesUtil.setUserName("");

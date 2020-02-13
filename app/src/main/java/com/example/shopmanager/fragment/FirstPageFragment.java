@@ -27,8 +27,6 @@ import java.util.List;
 public class FirstPageFragment extends Fragment implements View.OnClickListener {
     private View fragment_firstPage;
     private Banner bn_banner;
-    private LinearLayout ll_type_first;
-    private View ll_type_second;
     private RecyclerView rcv_bookList;
 
     @Override
@@ -66,12 +64,7 @@ public class FirstPageFragment extends Fragment implements View.OnClickListener 
     private void initView() {
 
         bn_banner = fragment_firstPage.findViewById(R.id.bn_banner);
-        ll_type_first = fragment_firstPage.findViewById(R.id.ll_type_first);
-        ll_type_second = fragment_firstPage.findViewById(R.id.ll_type_second);
         rcv_bookList = fragment_firstPage.findViewById(R.id.rcv_bookList);
-
-        ll_type_first.setOnClickListener(this);
-        ll_type_second.setOnClickListener(this);
         bn_banner.setImageLoader(new GlideImageLoader());
         bn_banner.isAutoPlay(true);
         bn_banner.setDelayTime(5000);
@@ -82,9 +75,7 @@ public class FirstPageFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.ll_type_first:
-                Toast.makeText(getContext(), "a", Toast.LENGTH_SHORT).show();
-                break;
+
         }
     }
 }
