@@ -21,6 +21,7 @@ import com.example.shopmanager.utils.RealPathFromUriUtils;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.File;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropSquareTransformation;
@@ -53,7 +54,7 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
         holder.tv_book_name.setText(list.get(position).getBookNmae());
         holder.tv_book_author.setText(list.get(position).getAuthor());
         holder.tv_book_score.setText(holder.tv_book_score.getText()+list.get(position).getScore());
-        Glide.with(context).load(list.get(position).getBookPhoto()).bitmapTransform(new CropTransformation(context,1000,1300)).into(holder.im_book);
+        Glide.with(context).load(new File(list.get(position).getBookPhoto())).into(holder.im_book);
     }
 
     @Override

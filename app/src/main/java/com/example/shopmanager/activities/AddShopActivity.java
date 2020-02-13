@@ -101,6 +101,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
                 String binding = et_add_book_binding.getText().toString();
                 String score = et_add_book_score.getText().toString();
                 String contents = et_add_book_contents.getText().toString();
+                bt_add_book_bookPhoto.setText(path);
                 if (path.equals("")) {
                     Toast.makeText(this, "请选择图片", Toast.LENGTH_SHORT).show();
                     return;
@@ -120,6 +121,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
                 et_add_book_score.setText("");
                 et_add_book_contents.setText("");
                 Glide.with(this).load(R.drawable.photo_default).into(iv_add_book_bookPhoto);
+                bt_add_book_bookPhoto.setText("获取图片");
                 break;
         }
     }
@@ -135,7 +137,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
                 uri = data.getData();
                 String uriString = String.valueOf(uri);
                 Glide.with(this).load(uriString).bitmapTransform(new CropSquareTransformation(this)).into(iv_add_book_bookPhoto);
-
+                path = RealPathFromUriUtils.getRealPathFromUri(this,uri);
                 bt_add_book_bookPhoto.setText(path);
             }
         }
