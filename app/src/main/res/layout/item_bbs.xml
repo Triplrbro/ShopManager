@@ -9,16 +9,18 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <ImageView
             android:id="@+id/iv_bbs_user"
-            android:src="@mipmap/ic_launcher"
             android:layout_width="30dp"
-            android:layout_height="30dp"/>
+            android:layout_height="30dp"
+            android:src="@mipmap/ic_launcher" />
         <TextView
             android:id="@+id/tv_bbs_user"
             android:text="用户小明"
+            android:layout_marginLeft="@dimen/margin_10"
             android:layout_gravity="center"
-            android:textSize="@dimen/textSize_15"
+            android:textSize="@dimen/textSize_20"
             android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
@@ -33,12 +35,11 @@
         android:text="M585虽然也几乎是无阻尼设计，但是没有像M546那么明显的缺陷，在鼠标晃动时滚轮不会跟着乱晃造成网页滚动。但偶尔会出现在A网页上滚动，alt+tab切到另一个窗口时的延迟滚动，这个应该就属于是软件上的问题了，可以忽略不计" />
 
     <ImageView
-        android:layout_marginLeft="@dimen/margin_10"
         android:layout_marginTop="@dimen/margin_20"
         android:id="@+id/iv_bbs"
         android:layout_below="@id/tv_bbs"
         android:src="@mipmap/ic_launcher"
-        android:layout_width="150dp"
-        android:layout_height="150dp" />
+        android:layout_width="220dp"
+        android:layout_height="220dp" />
     <include android:layout_below="@id/iv_bbs" android:layout_height="1dp" android:layout_width="match_parent" android:layout_marginTop="@dimen/margin_20" layout="@layout/item_underline"/>
 </RelativeLayout>

@@ -23,6 +23,7 @@
 
 
             <!--    </android.support.v4.widget.NestedScrollView>-->
+            <include android:layout_height="1dp" android:layout_width="match_parent" layout="@layout/item_underline"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -74,9 +75,11 @@
 
             </LinearLayout>
 
+            <include android:layout_height="1dp" android:layout_width="match_parent" layout="@layout/item_underline"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_bookList"
+                android:padding="@dimen/margin_10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >

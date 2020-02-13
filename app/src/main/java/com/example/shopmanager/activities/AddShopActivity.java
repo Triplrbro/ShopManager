@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
@@ -42,7 +41,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
     private Uri uri;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_shop);
 
@@ -63,6 +62,17 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
         bt_book_info_add_submit = (Button) findViewById(R.id.bt_book_info_add_submit);
         et_add_book_contents = (EditText) findViewById(R.id.et_add_book_contents);
         iv_add_book_bookPhoto = (ImageView) findViewById(R.id.iv_add_book_bookPhoto);
+
+
+        et_add_book_code.setText("01111");
+        et_add_book_bookName.setText("白鹿原");
+        et_add_book_price.setText("11.11");
+        et_add_book_oldPrice.setText("18.99");
+        et_add_book_author.setText("王伟");
+        et_add_book_press.setText("长江文学出版社");
+        et_add_book_score.setText("9.8");
+        et_add_book_binding.setText("精装");
+        et_add_book_contents.setText("这是一本值得读一读的好书");
 
         bt_add_book_bookPhoto.setOnClickListener(this);
         bt_book_info_add_submit.setOnClickListener(this);
@@ -111,7 +121,6 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
             if (data != null) {
                 // 得到图片的全路径
                 uri = data.getData();
-                System.out.println("========= 图片地址： " + path);
                 String uriString = String.valueOf(uri);
                 Glide.with(this).load(uriString).bitmapTransform(new CropSquareTransformation(this)).into(iv_add_book_bookPhoto);
 

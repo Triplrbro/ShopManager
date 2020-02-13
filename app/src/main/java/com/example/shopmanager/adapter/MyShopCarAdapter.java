@@ -24,6 +24,7 @@ import com.example.shopmanager.service.db.bean.ShoppingCart;
 import java.util.List;
 
 import jp.wasabeef.glide.transformations.CropSquareTransformation;
+import jp.wasabeef.glide.transformations.CropTransformation;
 
 public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.ViewHolder> {
     private List<ShoppingCart> list;
@@ -68,7 +69,7 @@ public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.View
     public void onBindViewHolder(@NonNull final MyShopCarAdapter.ViewHolder holder, final int position) {
 
         System.out.println(list.get(position).getBookInfo().getBookPhoto());
-        Glide.with(context).load(list.get(position).getBookInfo().getBookPhoto()).bitmapTransform(new CropSquareTransformation(context)).into(holder.im_book);
+        Glide.with(context).load(list.get(position).getBookInfo().getBookPhoto()).bitmapTransform(new CropTransformation(context,1000,1300)).into(holder.im_book);
         holder.tv_book_name.setText(list.get(position).getBookInfo().getBookNmae());
         holder.tv_shop_num.setText(String.valueOf(list.get(position).getNum()));
         holder.tv_book_author.setText(list.get(position).getBookInfo().getAuthor());

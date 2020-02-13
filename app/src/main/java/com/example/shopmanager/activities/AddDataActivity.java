@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 
 import com.example.shopmanager.R;
 import com.example.shopmanager.controller.BookInfoController;
@@ -36,7 +35,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
     private ShoppingCarController shoppingCarController;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_resource);
 
@@ -102,7 +101,7 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
                 System.out.println("==========="+i1);
                 break;
             case R.id.bt_insert_data_shop:
-                ShoppingCart shoppingCart = new ShoppingCart(null, 1L, 1L, 1, false);
+                ShoppingCart shoppingCart = new ShoppingCart(null, 1L, 1L, 1, 0L);
                 shoppingCarController.setShoppingCarOnce(shoppingCart);
                 System.out.println("============="+shoppingCart.toString());
                 tv_show_data_book.setText(shoppingCart.toString());

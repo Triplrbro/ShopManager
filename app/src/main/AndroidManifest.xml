@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.shopmanager">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activities.MainActivity">
-
-        </activity>
-        <activity android:name=".activities.BookDetailActivity"/>
-        <activity android:name=".activities.ShopCarActivity"/>
-        <activity android:name=".activities.RegisterActivity"/>
+        tools:replace="android:icon,android:theme,android:allowBackup">
+        <activity android:name=".activities.SetAddressActivity"></activity>
+        <activity android:name=".activities.MainActivity"></activity>
+        <activity android:name=".activities.BookDetailActivity" />
+        <activity android:name=".activities.ShopCarActivity" />
+        <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,13 +27,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.LoginActivity"/>
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.AddDataActivity" />
+        <activity android:name=".activities.OrderActivity" />
+        <activity android:name=".activities.SendBBSActivity" />
+        <activity android:name=".activities.AddShopActivity" />
+        <activity android:name=".activities.AddUserInfoActivity" />
 
-        <activity android:name=".activities.AddDataActivity"/>
-        <activity android:name=".activities.SendBBSActivity"/>
-        <activity android:name=".activities.AddShopActivity"/>
-        <activity android:name=".activities.AddUserInfoActivity"/>
-        <service android:name=".TestTwoService"/>
+        <service android:name=".TestTwoService" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

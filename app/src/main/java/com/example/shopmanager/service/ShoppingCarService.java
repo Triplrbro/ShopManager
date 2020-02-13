@@ -21,6 +21,14 @@ public class ShoppingCarService  extends BaseService{
     }
 
     /**
+     *  增加或是修改购物车多条
+     */
+    public void insertOrChangeList(List<ShoppingCart> shoppingCartList){
+        ShoppingCartDao shoppingCartDao = daoSession.getShoppingCartDao();
+        shoppingCartDao.insertOrReplaceInTx(shoppingCartList);
+    }
+
+    /**
      * 移除该用户的所有购物车信息
      */
     public void removeAllByUserId(Long userId){

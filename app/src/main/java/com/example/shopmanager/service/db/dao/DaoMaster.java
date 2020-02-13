@@ -22,21 +22,23 @@ public class DaoMaster extends AbstractDaoMaster {
     /** Creates underlying database table using DAOs. */
     public static void createAllTables(Database db, boolean ifNotExists) {
         BookInfoDao.createTable(db, ifNotExists);
-        ShoppingCartDao.createTable(db, ifNotExists);
-        UserInfoDao.createTable(db, ifNotExists);
-        TrendsInfoDao.createTable(db, ifNotExists);
         OrderBookInfoDao.createTable(db, ifNotExists);
         OrderInfoDao.createTable(db, ifNotExists);
+        OrderSettlementInfoDao.createTable(db, ifNotExists);
+        ShoppingCartDao.createTable(db, ifNotExists);
+        TrendsInfoDao.createTable(db, ifNotExists);
+        UserInfoDao.createTable(db, ifNotExists);
     }
 
     /** Drops underlying database table using DAOs. */
     public static void dropAllTables(Database db, boolean ifExists) {
         BookInfoDao.dropTable(db, ifExists);
-        ShoppingCartDao.dropTable(db, ifExists);
-        UserInfoDao.dropTable(db, ifExists);
-        TrendsInfoDao.dropTable(db, ifExists);
         OrderBookInfoDao.dropTable(db, ifExists);
         OrderInfoDao.dropTable(db, ifExists);
+        OrderSettlementInfoDao.dropTable(db, ifExists);
+        ShoppingCartDao.dropTable(db, ifExists);
+        TrendsInfoDao.dropTable(db, ifExists);
+        UserInfoDao.dropTable(db, ifExists);
     }
 
     /**
@@ -56,11 +58,12 @@ public class DaoMaster extends AbstractDaoMaster {
     public DaoMaster(Database db) {
         super(db, SCHEMA_VERSION);
         registerDaoClass(BookInfoDao.class);
-        registerDaoClass(ShoppingCartDao.class);
-        registerDaoClass(UserInfoDao.class);
-        registerDaoClass(TrendsInfoDao.class);
         registerDaoClass(OrderBookInfoDao.class);
         registerDaoClass(OrderInfoDao.class);
+        registerDaoClass(OrderSettlementInfoDao.class);
+        registerDaoClass(ShoppingCartDao.class);
+        registerDaoClass(TrendsInfoDao.class);
+        registerDaoClass(UserInfoDao.class);
     }
 
     public DaoSession newSession() {
