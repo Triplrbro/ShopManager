@@ -116,10 +116,12 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <ImageView
-                        android:src="@drawable/ic_star"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_cup" />
+
                     <TextView
                         android:text="豆瓣评分"
                         android:textSize="@dimen/textSize_20"
@@ -167,13 +169,22 @@
             android:layout_width="30dp"
             android:layout_height="30dp"/>
         <View
+            android:id="@+id/v_view"
             android:background="@color/gray1"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="@dimen/margin_20"
             android:layout_marginBottom="@dimen/margin_20"
             android:layout_toRightOf="@+id/bt_goto_index"
             android:layout_width="1dp"
             android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/bt_collect"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/ic_collected"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/v_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
             <Button
                 android:id="@+id/bt_add_shopcar"
                 android:text="加入购物车"

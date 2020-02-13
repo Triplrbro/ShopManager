@@ -126,7 +126,7 @@
                     android:layout_centerVertical="true"
                     android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_collect" />
+                    android:src="@drawable/ic_collected" />
 
                 <TextView
                     android:layout_centerVertical="true"
