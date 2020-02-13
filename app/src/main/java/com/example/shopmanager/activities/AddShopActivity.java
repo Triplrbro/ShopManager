@@ -65,7 +65,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
         Glide.with(this).load(R.drawable.photo_default).into(iv_add_book_bookPhoto);
 
 
-        et_add_book_code.setText("01111");
+        /*et_add_book_code.setText("01111");
         et_add_book_bookName.setText("白鹿原");
         et_add_book_price.setText("11.11");
         et_add_book_oldPrice.setText("18.99");
@@ -73,7 +73,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
         et_add_book_press.setText("长江文学出版社");
         et_add_book_score.setText("9.8");
         et_add_book_binding.setText("精装");
-        et_add_book_contents.setText("这是一本值得读一读的好书");
+        et_add_book_contents.setText("这是一本值得读一读的好书");*/
 
         bt_add_book_bookPhoto.setOnClickListener(this);
         bt_book_info_add_submit.setOnClickListener(this);
@@ -103,12 +103,23 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
                 String contents = et_add_book_contents.getText().toString();
                 if (path.equals("")) {
                     Toast.makeText(this, "请选择图片", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 BookInfo bookInfo = new BookInfo(null, code, bookName, price, oldPrice, author, press, binding, score, contents, RealPathFromUriUtils.getRealPathFromUri(this,uri),0);
                 System.out.println("RealPathFromUriUtils"+ RealPathFromUriUtils.getRealPathFromUri(this,uri));
                 bookInfoController.setBookInfo(bookInfo);
                 System.out.println("==================" + bookInfo.toString());
                 Toast.makeText(this, "商品信息添加完成！", Toast.LENGTH_SHORT).show();
+                et_add_book_code.setText("");
+                et_add_book_bookName.setText("");
+                et_add_book_price.setText("");
+                et_add_book_oldPrice.setText("");
+                et_add_book_author.setText("");
+                et_add_book_press.setText("");
+                et_add_book_binding.setText("");
+                et_add_book_score.setText("");
+                et_add_book_contents.setText("");
+                Glide.with(this).load(R.drawable.photo_default).into(iv_add_book_bookPhoto);
                 break;
         }
     }

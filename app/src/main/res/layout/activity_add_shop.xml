@@ -56,6 +56,7 @@
                 android:id="@+id/et_add_book_code"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:layout_gravity="center_vertical"
                 android:background="@drawable/shape_user_edit"/>
         </LinearLayout>
@@ -77,6 +78,7 @@
                 android:id="@+id/et_add_book_bookName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
@@ -98,6 +100,7 @@
                 android:id="@+id/et_add_book_price"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
@@ -119,6 +122,7 @@
                 android:id="@+id/et_add_book_oldPrice"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
@@ -140,6 +144,7 @@
                 android:id="@+id/et_add_book_author"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
@@ -161,6 +166,7 @@
                 android:id="@+id/et_add_book_press"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
@@ -182,6 +188,7 @@
                 android:id="@+id/et_add_book_binding"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
@@ -203,6 +210,7 @@
                 android:id="@+id/et_add_book_score"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
@@ -224,6 +232,7 @@
                 android:id="@+id/et_add_book_contents"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/shape_user_edit"
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
