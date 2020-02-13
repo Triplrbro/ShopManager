@@ -39,7 +39,7 @@ public class OrderListItemAdapter extends RecyclerView.Adapter<OrderListItemAdap
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_book_index, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_order, parent, false);
         return new OrderListItemAdapter.ViewHolder(view,onItemClickListener);
     }
 
@@ -47,7 +47,8 @@ public class OrderListItemAdapter extends RecyclerView.Adapter<OrderListItemAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tv_book_name.setText(list.get(position).getBookInfo().getBookNmae());
         holder.tv_book_author.setText(list.get(position).getBookInfo().getAuthor());
-        holder.tv_book_score.setText(holder.tv_book_score.getText()+list.get(position).getBookInfo().getScore());
+        holder.tv_shop_num.setText(String.valueOf(list.get(position).getNum()));
+        holder.tv_book_price.setText(holder.tv_book_price.getText()+list.get(position).getBookInfo().getScore());
         Glide.with(context).load(list.get(position).getBookInfo().getBookPhoto()).bitmapTransform(new CropTransformation(context,1000,1300)).into(holder.im_book);
     }
 
@@ -60,7 +61,8 @@ public class OrderListItemAdapter extends RecyclerView.Adapter<OrderListItemAdap
         private final ImageView im_book;
         private final TextView tv_book_name;
         private final TextView tv_book_author;
-        private final TextView tv_book_score;
+        private final TextView tv_book_price;
+        private final TextView tv_shop_num;
 
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener onItemClickListener) {
@@ -69,7 +71,8 @@ public class OrderListItemAdapter extends RecyclerView.Adapter<OrderListItemAdap
             im_book = itemView.findViewById(R.id.im_book);
             tv_book_name = itemView.findViewById(R.id.tv_book_name);
             tv_book_author = itemView.findViewById(R.id.tv_book_author);
-            tv_book_score = itemView.findViewById(R.id.tv_book_score);
+            tv_book_price = itemView.findViewById(R.id.tv_book_price);
+            tv_shop_num = itemView.findViewById(R.id.tv_shop_num);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

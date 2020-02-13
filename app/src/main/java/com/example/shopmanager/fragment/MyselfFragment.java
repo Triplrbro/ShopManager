@@ -8,7 +8,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -36,11 +35,13 @@ import java.util.List;
 public class MyselfFragment extends Fragment implements View.OnClickListener {
 
     private View fragment_myself;
-    private Button bt_set;
-    private RelativeLayout ll_order;
     private LinearLayout ll_userHead;
+    private RelativeLayout ll_order;
     private ImageView iv_order;
     private TextView tv_order;
+    private RelativeLayout ll_set;
+    private ImageView iv_set;
+    private TextView tv_set;
     private RecyclerView rv_my_bbs;
     private ImageView iv_userHead;
     private Uri uri;
@@ -77,7 +78,9 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
     private void initView() {
 
 
-        bt_set = fragment_myself.findViewById(R.id.bt_set);
+        ll_set = fragment_myself.findViewById(R.id.ll_set);
+        iv_set = fragment_myself.findViewById(R.id.iv_set);
+        tv_set = fragment_myself.findViewById(R.id.tv_set);
         ll_order = fragment_myself.findViewById(R.id.ll_order);
         iv_order = fragment_myself.findViewById(R.id.iv_order);
         tv_order = fragment_myself.findViewById(R.id.tv_order);
@@ -95,7 +98,7 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
         });
         iv_userHead.setOnClickListener(this);
 
-        bt_set.setOnClickListener(this);
+        ll_set.setOnClickListener(this);
         iv_order.setOnClickListener(this);
         ll_order.setOnClickListener(this);
     }
@@ -103,7 +106,9 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.bt_set:
+            case R.id.ll_set:
+            case R.id.iv_set:
+            case R.id.tv_set:
                 Intent intent = new Intent(getContext(), AddDataActivity.class);
                 startActivity(intent);
                 break;
