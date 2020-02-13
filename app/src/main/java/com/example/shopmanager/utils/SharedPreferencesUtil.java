@@ -29,7 +29,7 @@ public class SharedPreferencesUtil {
     //TODO:无SharedPreferences文件返回0
 
     private static String getBase(String key) {
-        return sp.getString(key,"0");
+        return sp.getString(key,"");
     }
 
 

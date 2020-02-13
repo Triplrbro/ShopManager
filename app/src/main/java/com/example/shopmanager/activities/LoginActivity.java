@@ -35,20 +35,27 @@ public class LoginActivity extends Activity {
         bt_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!et_userNumber.getText().toString().trim().isEmpty() && !et_userNumber.getText().toString().trim().isEmpty()) {
-                    if (userController.checkUserAccess(et_userNumber.getText().toString().trim(), et_userNumber.getText().toString().trim())) {
+                String et_userNameString = et_userNumber.getText().toString().trim();
+                String et_passwordString = et_password.getText().toString().trim();
+                if (!et_userNameString.isEmpty() && !et_passwordString.isEmpty()) {
+
+                    if (UserController.isAdmin(et_userNameString,et_passwordString)){
+                        Intent intent = new Intent(LoginActivity.this, AdminManagerActivity.class);
+                        startActivity(intent);
+                        return;
+                    }
+
+                    if (userController.checkUserAccess(et_userNameString, et_passwordString)) {
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(intent);
-
                     } else {
                         Toast.makeText(LoginActivity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
-
                     }
                 }
-                if (et_userNumber.getText().toString().trim().isEmpty()) {
+                if (et_userNameString.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "用户名为空", Toast.LENGTH_SHORT).show();
                 }
-                if (et_password.getText().toString().trim().isEmpty()) {
+                if (et_passwordString.isEmpty()) {
                     Toast.makeText(LoginActivity.this, "密码为空", Toast.LENGTH_SHORT).show();
                 }
             }
