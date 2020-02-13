@@ -62,6 +62,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
         bt_book_info_add_submit = (Button) findViewById(R.id.bt_book_info_add_submit);
         et_add_book_contents = (EditText) findViewById(R.id.et_add_book_contents);
         iv_add_book_bookPhoto = (ImageView) findViewById(R.id.iv_add_book_bookPhoto);
+        Glide.with(this).load(R.drawable.photo_default).into(iv_add_book_bookPhoto);
 
 
         et_add_book_code.setText("01111");

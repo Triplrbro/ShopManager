@@ -86,7 +86,7 @@ public class ChangeOrDeleteActivity extends Activity implements View.OnClickList
     public void onItemClick(View view, int position) {
         if (from.equals("change")) {
             Intent changeBook = new Intent(this, ChangeBookActivity.class);
-            changeBook.putExtra("bookInfo", JSON.toJSON(new BookInfo(1l, "1", "1", "1", "1", "1", "1", "1", "1", "1", "1")).toString());
+            changeBook.putExtra("bookInfo", JSON.toJSON(bookInfoList.get(position)).toString());
             startActivity(changeBook);
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_HOLO_DARK);
