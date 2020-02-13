@@ -19,6 +19,7 @@
 
 
     <!--    text尺寸定义    -->
+    <dimen name="textSize_12">12dp</dimen>
     <dimen name="textSize_15">15dp</dimen>
     <dimen name="textSize_20">20dp</dimen>
     <dimen name="textSize_23">23dp</dimen>

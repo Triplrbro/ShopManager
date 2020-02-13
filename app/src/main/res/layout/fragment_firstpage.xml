@@ -10,7 +10,9 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
 
             <com.youth.banner.Banner
                 android:id="@+id/bn_banner"
@@ -23,57 +25,6 @@
 
 
             <!--    </android.support.v4.widget.NestedScrollView>-->
-            <include android:layout_height="1dp" android:layout_width="match_parent" layout="@layout/item_underline"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/bn_banner"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/ll_type_first"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/aquamarine"
-                        android:contentDescription="@string/app_name" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="aaa" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_type_second"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/aquamarine"
-                        android:contentDescription="@string/app_name" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="aaa" />
-
-                </LinearLayout>
-
-            </LinearLayout>
 
             <include android:layout_height="1dp" android:layout_width="match_parent" layout="@layout/item_underline"/>
 

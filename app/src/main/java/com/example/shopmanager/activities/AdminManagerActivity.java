@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.shopmanager.R;
+import com.example.shopmanager.controller.UserController;
 
 public class AdminManagerActivity extends Activity implements View.OnClickListener {
 
@@ -25,6 +26,7 @@ public class AdminManagerActivity extends Activity implements View.OnClickListen
     private RelativeLayout rl_admin_manager;
     private ImageView iv_back_to_admin_manager;
     private TextView tv_order_not_over;
+    private UserController userController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,7 @@ public class AdminManagerActivity extends Activity implements View.OnClickListen
     }
 
     private void initData() {
-
+        userController = new UserController();
     }
 
     private void setOnClickListener() {
@@ -72,23 +74,28 @@ public class AdminManagerActivity extends Activity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.iv_close_admin_manager:
+                userController.clearUserId();
+                Intent login = new Intent(this, LoginActivity.class);
+                startActivity(login);
                 finish();
-                //TODO 需要注销
                 break;
             case R.id.tv_order_manager:
                 rl_admin_manager.setVisibility(View.GONE);
                 rl_order_manager.setVisibility(View.VISIBLE);
                 rl_book_manager.setVisibility(View.GONE);
+                iv_back_to_admin_manager.setVisibility(View.VISIBLE);
                 break;
             case R.id.tv_book_manager:
                 rl_admin_manager.setVisibility(View.GONE);
                 rl_order_manager.setVisibility(View.GONE);
                 rl_book_manager.setVisibility(View.VISIBLE);
+                iv_back_to_admin_manager.setVisibility(View.VISIBLE);
                 break;
             case R.id.iv_back_to_admin_manager:
                 rl_admin_manager.setVisibility(View.VISIBLE);
                 rl_order_manager.setVisibility(View.GONE);
                 rl_book_manager.setVisibility(View.GONE);
+                iv_back_to_admin_manager.setVisibility(View.GONE);
                 break;
             case R.id.tv_add_book:
                 Intent add_book = new Intent(this, AddShopActivity.class);
