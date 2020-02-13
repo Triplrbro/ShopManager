@@ -95,8 +95,14 @@ public class AdminManagerActivity extends Activity implements View.OnClickListen
                 startActivity(add_book);
                 break;
             case R.id.tv_change_book:
+                Intent change_book = new Intent(this, ChangeOrDeleteActivity.class);
+                change_book.putExtra("from","change");
+                startActivity(change_book);
                 break;
             case R.id.tv_delete_book:
+                Intent delete_book = new Intent(this, ChangeOrDeleteActivity.class);
+                delete_book.putExtra("from","delete");
+                startActivity(delete_book);
                 break;
             case R.id.tv_order_over:
                 break;

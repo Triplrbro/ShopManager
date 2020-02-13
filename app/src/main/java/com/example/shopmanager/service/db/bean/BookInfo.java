@@ -5,12 +5,14 @@ import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
+import java.io.Serializable;
+
 /**
  *  书的数据库对应
  */
 
 @Entity
-public class BookInfo {
+public class BookInfo{
 
     @Id(autoincrement = true)
     private Long _id;
