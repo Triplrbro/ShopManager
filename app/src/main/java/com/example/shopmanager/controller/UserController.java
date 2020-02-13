@@ -104,7 +104,13 @@ public class UserController {
      *  是否是管理员
      */
     public static boolean isAdmin(String userName, String passWord){
-        return adminName.equals(userName) && adminPwd.equals(passWord);
+        if(adminName.equals(userName) && adminPwd.equals(passWord)) {
+            SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
+            sharedPreferencesUtil.setUserName(userName);
+            sharedPreferencesUtil.setUserId(userName);
+            return true;
+        }
+        return false;
     }
 
     /**
