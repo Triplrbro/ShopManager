@@ -47,13 +47,14 @@ public class BookInfo{
     // 图书图片
     private String bookPhoto;
 
-    // 图书删除标记
-    private int deleSign;
 
-    @Generated(hash = 906173558)
+    // 图书删除标记
+    private String deleSign;
+
+    @Generated(hash = 1461462208)
     public BookInfo(Long _id, String code, String bookNmae, String price,
             String oldPrice, String author, String press, String binding,
-            String score, String contents, String bookPhoto, int deleSign) {
+            String score, String contents, String bookPhoto, String deleSign) {
         this._id = _id;
         this.code = code;
         this.bookNmae = bookNmae;
@@ -160,7 +161,6 @@ public class BookInfo{
         this.bookPhoto = bookPhoto;
     }
 
-
     @Override
     public String toString() {
         return "BookInfo{" +
@@ -175,14 +175,17 @@ public class BookInfo{
                 ", score='" + score + '\'' +
                 ", contents='" + contents + '\'' +
                 ", bookPhoto='" + bookPhoto + '\'' +
+                ", deleSign='" + deleSign + '\'' +
                 '}';
     }
 
-    public int getDeleSign() {
+    public String getDeleSign() {
         return this.deleSign;
     }
 
-    public void setDeleSign(int deleSign) {
+    public void setDeleSign(String deleSign) {
         this.deleSign = deleSign;
     }
+
+
 }

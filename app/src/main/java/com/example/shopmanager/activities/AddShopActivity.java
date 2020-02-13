@@ -105,7 +105,7 @@ public class AddShopActivity extends Activity implements View.OnClickListener {
                     Toast.makeText(this, "请选择图片", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                BookInfo bookInfo = new BookInfo(null, code, bookName, price, oldPrice, author, press, binding, score, contents, RealPathFromUriUtils.getRealPathFromUri(this,uri),0);
+                BookInfo bookInfo = new BookInfo(null, code, bookName, price, oldPrice, author, press, binding, score, contents, RealPathFromUriUtils.getRealPathFromUri(this,uri),"0");
                 System.out.println("RealPathFromUriUtils"+ RealPathFromUriUtils.getRealPathFromUri(this,uri));
                 bookInfoController.setBookInfo(bookInfo);
                 System.out.println("==================" + bookInfo.toString());

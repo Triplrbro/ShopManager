@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
     }
 
     private void testInsert(){
-        BookInfo bookInfo = new BookInfo(null, "xxxx", "新华字典", "200", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location",0);
+        BookInfo bookInfo = new BookInfo(null, "xxxx", "新华字典", "200", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location","0");
         BookInfoService bookInfoService = new BookInfoService();
         bookInfoService.setBookInfo(bookInfo);
     }

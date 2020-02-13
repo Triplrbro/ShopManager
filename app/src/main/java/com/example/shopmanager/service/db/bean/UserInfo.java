@@ -33,9 +33,12 @@ public class UserInfo {
     // 用户密码
     private String passWord;
 
-    @Generated(hash = 2072481228)
+    // 描述
+    private String descri;
+
+    @Generated(hash = 40649202)
     public UserInfo(Long _id, String userPhoto, String account, String address,
-            String phone, String userName, String passWord) {
+            String phone, String userName, String passWord, String descri) {
         this._id = _id;
         this.userPhoto = userPhoto;
         this.account = account;
@@ -43,6 +46,7 @@ public class UserInfo {
         this.phone = phone;
         this.userName = userName;
         this.passWord = passWord;
+        this.descri = descri;
     }
 
     @Generated(hash = 1279772520)
@@ -117,5 +121,13 @@ public class UserInfo {
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
                 '}';
+    }
+
+    public String getDescri() {
+        return this.descri;
+    }
+
+    public void setDescri(String descri) {
+        this.descri = descri;
     }
 }
