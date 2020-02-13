@@ -51,6 +51,8 @@ public class SetAddressActivity extends Activity {
                 userInfo.setUserName(et_edit_name.getText().toString().trim());
                 userInfo.setPhone(et_edit_phone.getText().toString().trim());
                 new UserService().insertOrChangeUser(userInfo);
+                finish();
+//                startActivity(new Intent(SetAddressActivity.this,OrderActivity.class));
             }
         });
 

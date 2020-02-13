@@ -48,32 +48,36 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/ll_pay_info"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_person_name"
                         android:layout_width="match_parent"
                         android:textStyle="bold"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/margin_10"
-                        android:text="姓名"
+                        android:text="姓名:"
                         android:textColor="@color/gray8" />
 
                     <TextView
+                        android:id="@+id/tv_person_address"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_10"
                         android:layout_marginTop="@dimen/margin_10"
-                        android:text="地址"
+                        android:text="地址:"
                         android:textColor="@color/gray7" />
 
                     <TextView
+                        android:id="@+id/tv_person_phone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginLeft="@dimen/margin_10"
                         android:layout_marginTop="@dimen/margin_10"
-                        android:text="电话"
+                        android:text="电话:"
                         android:textColor="@color/gray7" />
                 </LinearLayout>
 
@@ -91,12 +95,38 @@
     <LinearLayout
         android:id="@+id/ll_pay"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:padding="@dimen/margin_10"
+        android:layout_height="80dp"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="结算" />
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/textSize_15"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="合计金额：" />
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textSize="@dimen/textSize_15"
+            android:textColor="@color/star_gold"
+            android:textStyle="bold"
+            android:id="@+id/tv_num_price"
+            android:text="777"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/bt_add_shopcar"
+            android:text="去付款"
+            android:textColor="@color/gray2"
+            android:textStyle="bold"
+            android:layout_marginLeft="120dp"
+            android:background="@drawable/btn_selector"
+            android:layout_gravity="center_vertical"
+            android:layout_width="150dp"
+            android:layout_height="40dp"/>
+
+
     </LinearLayout>
 </LinearLayout>

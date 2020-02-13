@@ -4,6 +4,7 @@
 
 
     <!--    height尺寸定义    -->
+    <dimen name="height_100">100dp</dimen>
     <dimen name="height_200">200dp</dimen>
     <dimen name="height_300">300dp</dimen>
 

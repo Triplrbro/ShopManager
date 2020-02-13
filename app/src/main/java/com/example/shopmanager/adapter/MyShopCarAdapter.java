@@ -6,9 +6,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,7 +21,6 @@ import com.example.shopmanager.service.db.bean.ShoppingCart;
 
 import java.util.List;
 
-import jp.wasabeef.glide.transformations.CropSquareTransformation;
 import jp.wasabeef.glide.transformations.CropTransformation;
 
 public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.ViewHolder> {
@@ -70,6 +67,7 @@ public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.View
 
         System.out.println(list.get(position).getBookInfo().getBookPhoto());
         Glide.with(context).load(list.get(position).getBookInfo().getBookPhoto()).bitmapTransform(new CropTransformation(context,1000,1300)).into(holder.im_book);
+        holder.tv_book_price.setText(list.get(position).getBookInfo().getPrice());
         holder.tv_book_name.setText(list.get(position).getBookInfo().getBookNmae());
         holder.tv_shop_num.setText(String.valueOf(list.get(position).getNum()));
         holder.tv_book_author.setText(list.get(position).getBookInfo().getAuthor());
@@ -93,7 +91,6 @@ public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.View
                     list.remove(position);
                     notifyDataSetChanged();
                 }
-
             }
         });
         holder.rl_book_item.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +113,7 @@ public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.View
 
         private final ImageView im_book;
         private final TextView tv_book_name;
+        private final TextView tv_book_price;
         private final TextView tv_shop_num;
         private final TextView tv_book_author;
         private final ImageView iv_del_shop;
@@ -130,6 +128,7 @@ public class MyShopCarAdapter extends RecyclerView.Adapter<MyShopCarAdapter.View
             iv_del_shop = itemView.findViewById(R.id.iv_del_shop);
             iv_add_shop = itemView.findViewById(R.id.iv_add_shop);
             tv_shop_num = itemView.findViewById(R.id.tv_shop_num);
+            tv_book_price = itemView.findViewById(R.id.tv_book_price);
             rl_book_item = itemView.findViewById(R.id.rl_book_item);
 
         }

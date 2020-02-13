@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         layout="@layout/item_underline"/>
     <RelativeLayout
+        android:background="#fff"
         android:id="@+id/rl_deal"
         android:layout_alignParentBottom="true"
         android:paddingRight="@dimen/margin_20"
