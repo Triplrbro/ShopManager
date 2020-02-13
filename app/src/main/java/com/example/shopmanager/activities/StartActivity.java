@@ -21,14 +21,21 @@ public class StartActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.start_login);
         initDB();
         UserController userController = new UserController();
         // 如果有本地缓存，直接登录
+
+
+        if (userController.autoCheckUserAccessAdmin()) {
+            Intent intent = new Intent(this, AdminManagerActivity.class);
+            startActivity(intent);
+        }
         if (userController.autoCheckUserAccess()) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         }
+        setContentView(R.layout.start_login);
+
 
         bt_login = findViewById(R.id.bt_login);
         bt_register = findViewById(R.id.bt_register);

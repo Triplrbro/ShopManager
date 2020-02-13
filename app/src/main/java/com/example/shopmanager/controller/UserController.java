@@ -37,7 +37,7 @@ public class UserController {
     }
 
     /**
-     * 自动登录校验
+     * 自动登录校验 普通用户
      * 成功返回 true
      * 失败返回 false
      */
@@ -46,6 +46,18 @@ public class UserController {
         String userName = sharedPreferencesUtil.getUserName();
         System.out.println("===========自动登录校验 userName "+userName);
         return userName!=null&&!userName.isEmpty();
+    }
+
+    /**
+     * 自动登录校验  管理员
+     * 成功返回 true
+     * 失败返回 false
+     */
+    public boolean autoCheckUserAccessAdmin() {
+        SharedPreferencesUtil sharedPreferencesUtil = new SharedPreferencesUtil();
+        String userName = sharedPreferencesUtil.getUserName();
+        System.out.println("===========自动登录校验 userName "+userName);
+        return userName!=null&&!userName.isEmpty()&&userName.equals(adminName);
     }
 
     /**
