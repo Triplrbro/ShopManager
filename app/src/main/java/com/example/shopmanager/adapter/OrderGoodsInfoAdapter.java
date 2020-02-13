@@ -70,8 +70,8 @@ public class OrderGoodsInfoAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.tv_goods_name.setText(shoppingCartList.get(position).getBookInfo().getBookNmae());
-        viewHolder.tv_price.setText(shoppingCartList.get(position).getBookInfo().getPrice());
-        viewHolder.tv_count.setText(shoppingCartList.get(position).getNum());
+        viewHolder.tv_price.setText("￥"+shoppingCartList.get(position).getBookInfo().getPrice());
+        viewHolder.tv_count.setText(String.valueOf(shoppingCartList.get(position).getNum()));
         if (shoppingCartList.get(position).getBookInfo().getBookPhoto().length() == 0 || shoppingCartList.get(position).getBookInfo().getBookPhoto().equals("hrrp://location") || shoppingCartList.get(position).getBookInfo().getBookPhoto() == null) {
             Glide.with(context).load(R.drawable.photo_default).into(viewHolder.iv_goods);
         } else {

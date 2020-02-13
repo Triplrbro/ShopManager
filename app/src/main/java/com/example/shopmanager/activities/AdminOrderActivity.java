@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -16,7 +17,7 @@ import com.example.shopmanager.views.MyListView;
 
 import java.util.List;
 
-public class AdminOrderActivity extends Activity {
+public class AdminOrderActivity extends Activity implements View.OnClickListener {
 
     private TextView tv_title;
     private Button bt_back;
@@ -57,9 +58,19 @@ public class AdminOrderActivity extends Activity {
                 break;
         }
         adminOrderAdapter = new AdminOrderAdapter(this, orderSettlementInfos, type);
+        lv_admin_order.setAdapter(adminOrderAdapter);
     }
 
     private void setOnClickListener() {
+        bt_back.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.bt_back:
+                finish();
+                break;
+        }
     }
 }

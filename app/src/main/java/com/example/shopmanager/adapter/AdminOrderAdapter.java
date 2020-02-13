@@ -108,7 +108,7 @@ public class AdminOrderAdapter extends BaseAdapter {
                 notifyDataSetChanged();
             }
         });
-        viewHolder.tv_price_all.setText("￥"+orderInfoList.get(position).getRealityPrice());
+        viewHolder.tv_price_all.setText("￥"+orderInfoList.get(position).getAllPrice());
         return convertView;
     }
 
