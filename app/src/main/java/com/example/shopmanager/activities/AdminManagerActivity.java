@@ -9,6 +9,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.shopmanager.R;
+import com.example.shopmanager.controller.OrderController;
+import com.example.shopmanager.controller.OrderSettlementController;
 import com.example.shopmanager.controller.UserController;
 
 public class AdminManagerActivity extends Activity implements View.OnClickListener {
@@ -111,11 +113,20 @@ public class AdminManagerActivity extends Activity implements View.OnClickListen
                 delete_book.putExtra("from","delete");
                 startActivity(delete_book);
                 break;
-            case R.id.tv_order_over:
-                break;
             case R.id.tv_order_send:
+                Intent admin_order_send = new Intent(this, AdminOrderActivity.class);
+                admin_order_send.putExtra("type", OrderSettlementController.MAKE_ODER);
+                startActivity(admin_order_send);
                 break;
             case R.id.tv_order_not_over:
+                Intent admin_order_not_over = new Intent(this, AdminOrderActivity.class);
+                admin_order_not_over.putExtra("type", OrderSettlementController.SEND_ODER);
+                startActivity(admin_order_not_over);
+                break;
+            case R.id.tv_order_over:
+                Intent admin_order_over = new Intent(this, AdminOrderActivity.class);
+                admin_order_over.putExtra("type", OrderSettlementController.FINISH_ODER);
+                startActivity(admin_order_over);
                 break;
         }
     }

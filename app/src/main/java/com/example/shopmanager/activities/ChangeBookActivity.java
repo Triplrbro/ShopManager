@@ -82,7 +82,7 @@ public class ChangeBookActivity extends Activity implements View.OnClickListener
         et_add_book_binding.setText(bookInfo.getBinding());
         et_add_book_score.setText(bookInfo.getScore());
         et_add_book_contents.setText(bookInfo.getContents());
-        if (bookInfo.getBookPhoto().equals("hrrp://location")) {
+        if (bookInfo.getBookPhoto().length() == 0 || bookInfo.getBookPhoto().equals("hrrp://location") || bookInfo.getBookPhoto() == null) {
             Glide.with(this).load(R.drawable.photo_default).into(iv_add_book_bookPhoto);
         } else {
             Glide.with(this).load(bookInfo.getBookPhoto()).into(iv_add_book_bookPhoto);
