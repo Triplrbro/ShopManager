@@ -16,6 +16,7 @@ public class UserService extends BaseService{
      */
     public void insertOrChangeUser(UserInfo userInfo){
         daoSession.getUserInfoDao().insertOrReplace(userInfo);
+        daoSession.clear();
     }
 
     /**
@@ -23,6 +24,7 @@ public class UserService extends BaseService{
      */
     public List<UserInfo> queryAllUserInfo(){
         List<UserInfo> list = daoSession.getUserInfoDao().queryBuilder().list();
+        daoSession.clear();
         return list;
     }
 
@@ -31,6 +33,7 @@ public class UserService extends BaseService{
      */
     public UserInfo queryUserInfoById(Long userId){
         UserInfo unique = daoSession.getUserInfoDao().queryBuilder().where(UserInfoDao.Properties._id.eq(userId)).unique();
+        daoSession.clear();
         return unique;
     }
 
@@ -39,6 +42,7 @@ public class UserService extends BaseService{
      */
     public UserInfo queryUserInfoByName(String userName){
         UserInfo unique = daoSession.getUserInfoDao().queryBuilder().where(UserInfoDao.Properties.UserName.eq(userName)).unique();
+        daoSession.clear();
         return unique;
     }
 

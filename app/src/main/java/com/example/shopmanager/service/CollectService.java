@@ -15,6 +15,7 @@ public class CollectService extends BaseService {
     public void insertColler(CollectInfo collectInfo) {
         CollectInfoDao collectInfoDao = daoSession.getCollectInfoDao();
         collectInfoDao.insertOrReplace(collectInfo);
+        daoSession.clear();
     }
 
     /**
@@ -23,6 +24,7 @@ public class CollectService extends BaseService {
     public long isColler(Long userId, Long bookId) {
         CollectInfoDao collectInfoDao = daoSession.getCollectInfoDao();
         long unique = collectInfoDao.queryBuilder().where(CollectInfoDao.Properties.BookId.eq(bookId)).where(CollectInfoDao.Properties.UserId.eq(userId)).count();
+        daoSession.clear();
         return unique;
     }
 

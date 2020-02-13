@@ -18,6 +18,7 @@ public class TrendsService extends BaseService{
      */
     public void insertOrChangeTrendsInfo(TrendsInfo trendsInfo){
         daoSession.getTrendsInfoDao().insertOrReplace(trendsInfo);
+        daoSession.clear();
     }
 
     /**
@@ -30,6 +31,7 @@ public class TrendsService extends BaseService{
             UserInfo userInfo = userService.queryUserInfoById(trendsInfo.getUserId());
             trendsInfo.setUserInfo(userInfo);
         }
+        daoSession.clear();
         return list;
     }
 
@@ -38,6 +40,7 @@ public class TrendsService extends BaseService{
      */
     public List<TrendsInfo>  queryTrendsInfoById(Long userId){
         List<TrendsInfo> unique = daoSession.getTrendsInfoDao().queryBuilder().where(TrendsInfoDao.Properties.UserId.eq(userId)).list();
+        daoSession.clear();
         return unique;
     }
 

@@ -18,6 +18,7 @@ public class ShoppingCarService  extends BaseService{
     public void insertOrChange(ShoppingCart shoppingCart){
         ShoppingCartDao shoppingCartDao = daoSession.getShoppingCartDao();
         shoppingCartDao.insertOrReplace(shoppingCart);
+        daoSession.clear();
     }
 
     /**
@@ -26,6 +27,7 @@ public class ShoppingCarService  extends BaseService{
     public void insertOrChangeList(List<ShoppingCart> shoppingCartList){
         ShoppingCartDao shoppingCartDao = daoSession.getShoppingCartDao();
         shoppingCartDao.insertOrReplaceInTx(shoppingCartList);
+        daoSession.clear();
     }
 
     /**
@@ -34,6 +36,7 @@ public class ShoppingCarService  extends BaseService{
     public void removeAllByUserId(Long userId){
         ShoppingCartDao shoppingCartDao = daoSession.getShoppingCartDao();
         shoppingCartDao.queryBuilder().where(ShoppingCartDao.Properties.UserId.eq(userId)).buildDelete().executeDeleteWithoutDetachingEntities();
+        daoSession.clear();
     }
 
     /**
@@ -42,6 +45,7 @@ public class ShoppingCarService  extends BaseService{
     public void removeOneById(Long id){
         ShoppingCartDao shoppingCartDao = daoSession.getShoppingCartDao();
         shoppingCartDao.deleteByKey(id);
+        daoSession.clear();
     }
 
     /**
@@ -50,6 +54,7 @@ public class ShoppingCarService  extends BaseService{
     public ShoppingCart queryShopCarOne(Long id){
         ShoppingCartDao shoppingCartDao = daoSession.getShoppingCartDao();
         ShoppingCart unique = shoppingCartDao.queryBuilder().where(ShoppingCartDao.Properties._id.eq(id)).unique();
+        daoSession.clear();
         return unique;
     }
 
@@ -63,6 +68,7 @@ public class ShoppingCarService  extends BaseService{
         {
             return unique.get(0);
         }
+        daoSession.clear();
         return null;
     }
 
@@ -72,12 +78,13 @@ public class ShoppingCarService  extends BaseService{
     public List<ShoppingCart> queryUserCarList(Long userId){
         List<ShoppingCart> list = daoSession.getShoppingCartDao().queryBuilder()
                 .where(ShoppingCartDao.Properties.UserId.eq(userId))
-                .where(ShoppingCartDao.Properties.OrderSettlementInfoId.eq(0)).list();
+                .where(ShoppingCartDao.Properties.OrderSettlementInfoId.eq("0")).list();
         for (ShoppingCart shoppingCart : list){
             BookInfoService bookInfoService = new BookInfoService();
             BookInfo bookInfoById = bookInfoService.getBookInfoById(shoppingCart.getBookId());
             shoppingCart.setBookInfo(bookInfoById);
         }
+        daoSession.clear();
         return list;
     }
 

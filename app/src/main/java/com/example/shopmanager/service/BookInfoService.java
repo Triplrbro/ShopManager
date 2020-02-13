@@ -17,6 +17,7 @@ public class BookInfoService extends BaseService {
     public List<BookInfo> queryBookInfoList() {
         BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
         List<BookInfo> list = bookInfoDao.queryBuilder().list();
+        daoSession.clear();
         return list;
     }
 
@@ -26,6 +27,7 @@ public class BookInfoService extends BaseService {
     public BookInfo getBookInfByCode(String code) {
         BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
         BookInfo bookInfo = bookInfoDao.queryBuilder().where(BookInfoDao.Properties.Code.eq(code)).unique();
+        daoSession.clear();
         return bookInfo;
     }
 
@@ -35,6 +37,7 @@ public class BookInfoService extends BaseService {
     public BookInfo getBookInfoByName(String name){
         BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
         BookInfo bookInfo = bookInfoDao.queryBuilder().where(BookInfoDao.Properties.BookNmae.like("%"+name+"%")).unique();
+        daoSession.clear();
         return bookInfo;
     }
 
@@ -44,6 +47,7 @@ public class BookInfoService extends BaseService {
     public void setBookInfo(BookInfo bookInfo){
         BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
         bookInfoDao.insertOrReplace(bookInfo);
+        daoSession.clear();
     }
 
     /**
@@ -52,6 +56,7 @@ public class BookInfoService extends BaseService {
     public List<BookInfo> getNumBookInfo(int num){
         BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
         List<BookInfo> list = bookInfoDao.queryBuilder().limit(num).list();
+        daoSession.clear();
         return list;
     }
 
@@ -61,6 +66,7 @@ public class BookInfoService extends BaseService {
     public BookInfo getBookInfoById(Long id) {
         BookInfoDao bookInfoDao = daoSession.getBookInfoDao();
         BookInfo bookInfo = bookInfoDao.queryBuilder().where(BookInfoDao.Properties._id.eq(id)).unique();
+        daoSession.clear();
         return bookInfo;
     }
 }

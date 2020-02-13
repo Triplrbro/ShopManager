@@ -93,6 +93,7 @@ public class ShoppingCarController {
 
     /**
      *  清空购物车
+     *  废弃
      */
     public void removeAllByUserId(Long userId){
         shoppingCarService.removeAllByUserId(userId);

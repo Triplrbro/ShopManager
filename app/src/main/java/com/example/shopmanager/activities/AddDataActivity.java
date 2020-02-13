@@ -111,14 +111,14 @@ public class AddDataActivity extends Activity implements View.OnClickListener {
 
 
     private void testInsert() {
-        BookInfo bookInfo = new BookInfo(null, "xxxx", "了不起的我：自我发", "44", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location");
+        BookInfo bookInfo = new BookInfo(null, "xxxx", "了不起的我：自我发", "44", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location",0);
         BookInfoService bookInfoService = new BookInfoService();
         bookInfoService.setBookInfo(bookInfo);
-        bookInfo = new BookInfo(null, "xxxx", "永久记录", "200", "12", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location");
+        bookInfo = new BookInfo(null, "xxxx", "永久记录", "200", "12", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location",0);
         bookInfoService.setBookInfo(bookInfo);
-        bookInfo = new BookInfo(null, "xxxx", "DK儿童英语基础必", "123", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location");
+        bookInfo = new BookInfo(null, "xxxx", "DK儿童英语基础必", "123", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location",0);
         bookInfoService.setBookInfo(bookInfo);
-        bookInfo = new BookInfo(null, "xxxx", "【独家新品】乖，摸", "32", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location");
+        bookInfo = new BookInfo(null, "xxxx", "【独家新品】乖，摸", "32", "400", "中国人民", "北京邮电", "精装", "4.5", "这是简介啊~~~~~~", "hrrp://location",0);
         bookInfoService.setBookInfo(bookInfo);
     }
 

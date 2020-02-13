@@ -35,6 +35,7 @@ public class BookInfoDao extends AbstractDao<BookInfo, Long> {
         public final static Property Score = new Property(8, String.class, "score", false, "SCORE");
         public final static Property Contents = new Property(9, String.class, "contents", false, "CONTENTS");
         public final static Property BookPhoto = new Property(10, String.class, "bookPhoto", false, "BOOK_PHOTO");
+        public final static Property DeleSign = new Property(11, int.class, "deleSign", false, "DELE_SIGN");
     }
 
 
@@ -60,7 +61,8 @@ public class BookInfoDao extends AbstractDao<BookInfo, Long> {
                 "\"BINDING\" TEXT," + // 7: binding
                 "\"SCORE\" TEXT," + // 8: score
                 "\"CONTENTS\" TEXT," + // 9: contents
-                "\"BOOK_PHOTO\" TEXT);"); // 10: bookPhoto
+                "\"BOOK_PHOTO\" TEXT," + // 10: bookPhoto
+                "\"DELE_SIGN\" INTEGER NOT NULL );"); // 11: deleSign
     }
 
     /** Drops the underlying database table. */
@@ -127,6 +129,7 @@ public class BookInfoDao extends AbstractDao<BookInfo, Long> {
         if (bookPhoto != null) {
             stmt.bindString(11, bookPhoto);
         }
+        stmt.bindLong(12, entity.getDeleSign());
     }
 
     @Override
@@ -187,6 +190,7 @@ public class BookInfoDao extends AbstractDao<BookInfo, Long> {
         if (bookPhoto != null) {
             stmt.bindString(11, bookPhoto);
         }
+        stmt.bindLong(12, entity.getDeleSign());
     }
 
     @Override
@@ -207,7 +211,8 @@ public class BookInfoDao extends AbstractDao<BookInfo, Long> {
             cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // binding
             cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // score
             cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9), // contents
-            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10) // bookPhoto
+            cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10), // bookPhoto
+            cursor.getInt(offset + 11) // deleSign
         );
         return entity;
     }
@@ -225,6 +230,7 @@ public class BookInfoDao extends AbstractDao<BookInfo, Long> {
         entity.setScore(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
         entity.setContents(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
         entity.setBookPhoto(cursor.isNull(offset + 10) ? null : cursor.getString(offset + 10));
+        entity.setDeleSign(cursor.getInt(offset + 11));
      }
     
     @Override

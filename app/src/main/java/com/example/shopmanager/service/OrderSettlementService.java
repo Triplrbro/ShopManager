@@ -35,6 +35,7 @@ public class OrderSettlementService extends BaseService {
         }
         // 批量更新
         shoppingCarService.insertOrChangeList(shoppingCarts);
+        daoSession.clear();
     }
 
     /**
@@ -44,6 +45,7 @@ public class OrderSettlementService extends BaseService {
         // 插入订单信息
         OrderSettlementInfoDao orderSettlementInfoDao = daoSession.getOrderSettlementInfoDao();
         orderSettlementInfoDao.insertOrReplace(orderSettlementInfo);
+        daoSession.clear();
     }
 
     /**
@@ -52,6 +54,7 @@ public class OrderSettlementService extends BaseService {
     public List<OrderSettlementInfo> queryOrderInfoList(Long userId){
         OrderSettlementInfoDao orderSettlementInfoDao = daoSession.getOrderSettlementInfoDao();
         List<OrderSettlementInfo> list = orderSettlementInfoDao.queryBuilder().where(OrderSettlementInfoDao.Properties.UserId.eq(userId)).list();
+        daoSession.clear();
         return list;
     }
 
@@ -61,6 +64,7 @@ public class OrderSettlementService extends BaseService {
     public List<OrderSettlementInfo> queryOrderInfoList(String  stateCode){
         OrderSettlementInfoDao orderSettlementInfoDao = daoSession.getOrderSettlementInfoDao();
         List<OrderSettlementInfo> list = orderSettlementInfoDao.queryBuilder().where(OrderSettlementInfoDao.Properties.State.eq(stateCode)).list();
+        daoSession.clear();
         return list;
     }
 
@@ -71,6 +75,7 @@ public class OrderSettlementService extends BaseService {
     public OrderSettlementInfo queryOrderBookInfoById(Long id){
         OrderSettlementInfoDao orderSettlementInfoDao = daoSession.getOrderSettlementInfoDao();
         OrderSettlementInfo unique = orderSettlementInfoDao.queryBuilder().where(OrderSettlementInfoDao.Properties._id.eq(id)).unique();
+        daoSession.clear();
         return unique;
     }
 

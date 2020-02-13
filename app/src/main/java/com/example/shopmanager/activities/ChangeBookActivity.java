@@ -120,7 +120,7 @@ public class ChangeBookActivity extends Activity implements View.OnClickListener
                 if (path.equals("") || path.equals("获取图片")) {
                     Toast.makeText(this, "请选择图片", Toast.LENGTH_SHORT).show();
                 }
-                bookInfo = new BookInfo(bookInfo.get_id(), code, bookName, price, oldPrice, author, press, binding, score, contents, RealPathFromUriUtils.getRealPathFromUri(this, uri));
+                bookInfo = new BookInfo(bookInfo.get_id(), code, bookName, price, oldPrice, author, press, binding, score, contents, RealPathFromUriUtils.getRealPathFromUri(this, uri),0);
                 System.out.println("RealPathFromUriUtils" + RealPathFromUriUtils.getRealPathFromUri(this, uri));
                 bookInfoController.setBookInfo(bookInfo);
                 System.out.println("==================" + bookInfo.toString());
