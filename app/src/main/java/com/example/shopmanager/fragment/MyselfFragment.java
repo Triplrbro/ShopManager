@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.shopmanager.R;
 import com.example.shopmanager.activities.AddDataActivity;
-import com.example.shopmanager.activities.AddShopActivity;
+import com.example.shopmanager.activities.OrderListActivity;
 import com.example.shopmanager.adapter.TrendsInfoAdapter;
 import com.example.shopmanager.controller.TrendsController;
 import com.example.shopmanager.controller.UserController;
@@ -36,7 +37,7 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
 
     private View fragment_myself;
     private Button bt_set;
-    private LinearLayout ll_order;
+    private RelativeLayout ll_order;
     private LinearLayout ll_userHead;
     private ImageView iv_order;
     private TextView tv_order;
@@ -109,8 +110,9 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
             case R.id.ll_order:
             case R.id.iv_order:
             case R.id.tv_order:
-                Intent intent1 = new Intent(getContext(), AddShopActivity.class);
-                startActivity(intent1);
+
+                Intent intent2 = new Intent(getContext(), OrderListActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.iv_userHead:
 //                TODO:修改用户名页面实现

@@ -39,6 +39,10 @@ public class OrderSettlementInfo {
     // 用户ID
     private long userId;
 
+    // 用户ID
+    private String createData;
+
+
     @ToMany(referencedJoinProperty = "orderSettlementInfoId")//指定与之关联的其他类的id
     private List<ShoppingCart> shoppingCartList;
 
@@ -50,9 +54,9 @@ public class OrderSettlementInfo {
     @Generated(hash = 1228720983)
     private transient OrderSettlementInfoDao myDao;
 
-    @Generated(hash = 1362435195)
+    @Generated(hash = 1060815975)
     public OrderSettlementInfo(Long _id, String address, String phone, String name,
-            String allPrice, String realityPrice, long userId) {
+            String allPrice, String realityPrice, long userId, String createData) {
         this._id = _id;
         this.address = address;
         this.phone = phone;
@@ -60,6 +64,7 @@ public class OrderSettlementInfo {
         this.allPrice = allPrice;
         this.realityPrice = realityPrice;
         this.userId = userId;
+        this.createData = createData;
     }
 
     @Generated(hash = 1181163486)
@@ -120,6 +125,14 @@ public class OrderSettlementInfo {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public String getCreateData() {
+        return this.createData;
+    }
+
+    public void setCreateData(String createData) {
+        this.createData = createData;
     }
 
     /**
@@ -193,5 +206,7 @@ public class OrderSettlementInfo {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getOrderSettlementInfoDao() : null;
     }
+
+
 
 }

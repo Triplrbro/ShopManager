@@ -31,6 +31,7 @@ public class OrderSettlementInfoDao extends AbstractDao<OrderSettlementInfo, Lon
         public final static Property AllPrice = new Property(4, String.class, "allPrice", false, "ALL_PRICE");
         public final static Property RealityPrice = new Property(5, String.class, "realityPrice", false, "REALITY_PRICE");
         public final static Property UserId = new Property(6, long.class, "userId", false, "USER_ID");
+        public final static Property CreateData = new Property(7, String.class, "createData", false, "CREATE_DATA");
     }
 
     private DaoSession daoSession;
@@ -55,7 +56,8 @@ public class OrderSettlementInfoDao extends AbstractDao<OrderSettlementInfo, Lon
                 "\"NAME\" TEXT," + // 3: name
                 "\"ALL_PRICE\" TEXT," + // 4: allPrice
                 "\"REALITY_PRICE\" TEXT," + // 5: realityPrice
-                "\"USER_ID\" INTEGER NOT NULL );"); // 6: userId
+                "\"USER_ID\" INTEGER NOT NULL ," + // 6: userId
+                "\"CREATE_DATA\" TEXT);"); // 7: createData
     }
 
     /** Drops the underlying database table. */
@@ -98,6 +100,11 @@ public class OrderSettlementInfoDao extends AbstractDao<OrderSettlementInfo, Lon
             stmt.bindString(6, realityPrice);
         }
         stmt.bindLong(7, entity.getUserId());
+ 
+        String createData = entity.getCreateData();
+        if (createData != null) {
+            stmt.bindString(8, createData);
+        }
     }
 
     @Override
@@ -134,6 +141,11 @@ public class OrderSettlementInfoDao extends AbstractDao<OrderSettlementInfo, Lon
             stmt.bindString(6, realityPrice);
         }
         stmt.bindLong(7, entity.getUserId());
+ 
+        String createData = entity.getCreateData();
+        if (createData != null) {
+            stmt.bindString(8, createData);
+        }
     }
 
     @Override
@@ -156,7 +168,8 @@ public class OrderSettlementInfoDao extends AbstractDao<OrderSettlementInfo, Lon
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // name
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // allPrice
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // realityPrice
-            cursor.getLong(offset + 6) // userId
+            cursor.getLong(offset + 6), // userId
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7) // createData
         );
         return entity;
     }
@@ -170,6 +183,7 @@ public class OrderSettlementInfoDao extends AbstractDao<OrderSettlementInfo, Lon
         entity.setAllPrice(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setRealityPrice(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setUserId(cursor.getLong(offset + 6));
+        entity.setCreateData(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
      }
     
     @Override

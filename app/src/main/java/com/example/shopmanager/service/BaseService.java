@@ -23,7 +23,7 @@ public class BaseService {
     }
 
     public BaseService() {
-        mHelper = new DevOpenHelper(context, "person.db", null);
+        mHelper = new DevOpenHelper(context, "mydb", null);
         daoMaster = new DaoMaster(getWritableDatabase());
         daoSession = daoMaster.newSession();
     }
@@ -33,7 +33,7 @@ public class BaseService {
      */
     private SQLiteDatabase getReadableDatabase(){
         if(mHelper == null){
-            mHelper = new DaoMaster.DevOpenHelper(context,"person.db",null);
+            mHelper = new DaoMaster.DevOpenHelper(context,"mydb",null);
         }
         SQLiteDatabase db =mHelper.getReadableDatabase();
         return db;
@@ -45,7 +45,7 @@ public class BaseService {
      */
     private SQLiteDatabase getWritableDatabase(){
         if(mHelper == null){
-            mHelper =new DaoMaster.DevOpenHelper(context,"person.db",null);
+            mHelper =new DaoMaster.DevOpenHelper(context,"mydb",null);
         }
         SQLiteDatabase db = mHelper.getWritableDatabase();
         return db;
