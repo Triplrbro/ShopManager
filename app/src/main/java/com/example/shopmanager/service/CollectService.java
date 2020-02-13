@@ -3,6 +3,8 @@ package com.example.shopmanager.service;
 import com.example.shopmanager.service.db.bean.CollectInfo;
 import com.example.shopmanager.service.db.dao.CollectInfoDao;
 
+import java.util.List;
+
 /**
  * 收藏详情的数据请求层
  */
@@ -28,6 +30,14 @@ public class CollectService extends BaseService {
         return unique;
     }
 
-    //.where(BookInfoDao.Properties.DeleSign.notEq(0))
+    /**
+     *  查询收藏，已删除图书还在
+     */
+    public List<CollectInfo> queryCollectInfoListByUserId(Long userId){
+        CollectInfoDao collectInfoDao = daoSession.getCollectInfoDao();
+        List<CollectInfo> unique = collectInfoDao.queryBuilder().where(CollectInfoDao.Properties.UserId.eq(userId)).list();
+        daoSession.clear();
+        return unique;
+    }
 
 }
