@@ -44,7 +44,13 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.tv_order_date.setText(list.get(position).getCreateData());
+        holder.tv_person_address.setText(list.get(position).getAddress());
+        holder.tv_person_name.setText(list.get(position).getName());
+        holder.tv_person_phone.setText(list.get(position).getPhone());
+        holder.tv_order_number.setText(holder.tv_order_number.getText().toString().trim()+list.get(position).get_id());
         List<ShoppingCart> shoppingCartList = list.get(position).getShoppingCartList();
+        System.out.println("========shoppingCartList=========="+shoppingCartList);
         OrderListItemAdapter booksInfoAdapter = new OrderListItemAdapter(shoppingCartList,context);
         LinearLayoutManager manager = new LinearLayoutManager(context) {
             @Override
@@ -53,7 +59,17 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
             }
         };
         manager.setOrientation(LinearLayoutManager.VERTICAL);
+        booksInfoAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
 
+            }
+
+            @Override
+            public void onItemLongClick(View view) {
+
+            }
+        });
         holder.rv_shopcart.setLayoutManager(manager);
         holder.rv_shopcart.setAdapter(booksInfoAdapter);
     }
@@ -66,12 +82,20 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         private final TextView tv_order_date;
+        private final TextView tv_order_number;
+        private final TextView tv_person_name;
+        private final TextView tv_person_address;
+        private final TextView tv_person_phone;
         private final RecyclerView rv_shopcart;
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener onItemClickListener) {
             super(itemView);
 
+            tv_order_number = itemView.findViewById(R.id.tv_order_number);
             tv_order_date = itemView.findViewById(R.id.tv_order_date);
+            tv_person_address = itemView.findViewById(R.id.tv_person_address);
+            tv_person_phone = itemView.findViewById(R.id.tv_person_phone);
+            tv_person_name = itemView.findViewById(R.id.tv_person_name);
             rv_shopcart = itemView.findViewById(R.id.rv_shopcart);
         }
     }

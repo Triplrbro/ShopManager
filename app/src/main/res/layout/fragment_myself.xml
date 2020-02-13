@@ -13,31 +13,9 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_margin="@dimen/margin_10">
-
-
-                <RelativeLayout
-                    android:id="@+id/rl_set"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginRight="10dp">
-
-                    <Button
-                        android:id="@+id/bt_set"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:layout_centerInParent="true"
-                        android:background="@drawable/ic_launcher_background" />
-                </RelativeLayout>
-            </RelativeLayout>
-            <include layout="@layout/item_underline" />
 
             <RelativeLayout
+                android:background="@color/star_gold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -49,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="用户小明"
-                    android:textColor="@color/gray8"
+                    android:textColor="@color/gray0"
                     android:textSize="@dimen/textSize_25"
                     android:textStyle="bold" />
 
@@ -59,7 +37,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_userName"
                     android:text="uid:1008009920"
-                    android:textColor="@color/gray6" />
+                    android:textColor="@color/gray0"
+                    />
 
                 <TextView
                     android:id="@+id/tv_user_description"
@@ -70,7 +49,8 @@
                     android:paddingLeft="@dimen/margin_10"
                     android:paddingRight="@dimen/margin_10"
                     android:text="这是一句介绍我的话"
-                    android:textColor="@color/gray6" />
+                    android:textColor="@color/gray0"
+                    />
 
                 <ImageView
                     android:id="@+id/iv_userHead"
@@ -90,17 +70,17 @@
 
             <RelativeLayout
                 android:id="@+id/ll_order"
-                android:paddingRight="@dimen/margin_10"
-                android:paddingLeft="@dimen/margin_10"
+                android:paddingRight="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_20"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
                 <ImageView
                     android:id="@+id/iv_order"
                     android:layout_marginRight="@dimen/margin_10"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
                     android:layout_centerVertical="true"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_order" />
 
@@ -116,8 +96,8 @@
 
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
@@ -134,19 +114,19 @@
 
             <RelativeLayout
                 android:id="@+id/ll_add_shop"
-                android:paddingRight="@dimen/margin_10"
-                android:paddingLeft="@dimen/margin_10"
+                android:paddingRight="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_20"
                 android:layout_width="match_parent"
                 android:layout_height="50dp">
 
                 <ImageView
                     android:id="@+id/iv_add_shop"
                     android:layout_marginRight="@dimen/margin_10"
-                    android:layout_width="30dp"
+                    android:layout_width="25dp"
                     android:layout_centerVertical="true"
-                    android:layout_height="30dp"
+                    android:layout_height="25dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_order" />
+                    android:src="@drawable/ic_collect" />
 
                 <TextView
                     android:layout_centerVertical="true"
@@ -160,8 +140,50 @@
 
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_goto" />
+            </RelativeLayout>
+
+            <include
+                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_10"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                layout="@layout/item_underline" />
+            <RelativeLayout
+                android:id="@+id/ll_set"
+                android:paddingRight="@dimen/margin_20"
+                android:paddingLeft="@dimen/margin_20"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <ImageView
+                    android:id="@+id/iv_set"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:layout_width="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_set" />
+
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/tv_set"
+                    android:layout_toRightOf="@id/iv_set"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="设置" />
+
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
