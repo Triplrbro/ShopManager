@@ -21,6 +21,15 @@ public class CollectService extends BaseService {
     }
 
     /**
+     * 插入收藏信息
+     */
+    public void deleColler(CollectInfo collectInfo) {
+        CollectInfoDao collectInfoDao = daoSession.getCollectInfoDao();
+        collectInfoDao.delete(collectInfo);
+        daoSession.clear();
+    }
+
+    /**
      * 是否收藏
      */
     public long isColler(Long userId, Long bookId) {
