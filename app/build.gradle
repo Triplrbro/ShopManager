@@ -60,8 +60,3 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
 
 }
-
-dependencies {
-    implementation 'androidx.appcompat:appcompat:+'
-    implementation 'androidx.constraintlayout:constraintlayout:+'
-}

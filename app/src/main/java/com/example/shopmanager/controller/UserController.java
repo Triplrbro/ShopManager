@@ -11,6 +11,8 @@ import com.example.shopmanager.utils.SharedPreferencesUtil;
 public class UserController {
 
     private final UserService userService;
+    private final static String adminName = "admin";
+    private final static String adminPwd = "admin";
 
     public UserController() {
         userService = new UserService();
@@ -96,6 +98,13 @@ public class UserController {
         String userId = sharedPreferencesUtil.getUserId();
         Long aLong = Long.valueOf(userId);
         return aLong;
+    }
+
+    /**
+     *  是否是管理员
+     */
+    public static boolean isAdmin(String userName, String passWord){
+        return adminName.equals(userName) && adminPwd.equals(passWord);
     }
 
 }
