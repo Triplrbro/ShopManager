@@ -42,6 +42,11 @@ public class BooksInfoAdapter extends RecyclerView.Adapter<BooksInfoAdapter.View
         this.onItemClickListener = onItemClickListener;
     }
 
+    public void setList(List<BookInfo> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
+
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

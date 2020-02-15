@@ -83,7 +83,7 @@ public class ChangeOrDeleteActivity extends Activity implements View.OnClickList
     }
 
     @Override
-    public void onItemClick(View view, int position) {
+    public void onItemClick(View view, final int position) {
         if (from.equals("change")) {
             Intent changeBook = new Intent(this, ChangeBookActivity.class);
             changeBook.putExtra("bookInfo", JSON.toJSON(bookInfoList.get(position)).toString());
@@ -95,7 +95,11 @@ public class ChangeOrDeleteActivity extends Activity implements View.OnClickList
             builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-
+                    BookInfo bookInfo = bookInfoList.get(position);
+                    bookInfo.setDeleSign("1");
+                    bookInfoController.setBookInfo(bookInfo);
+                    bookInfoList.remove(position);
+                    booksInfoAdapter.setList(bookInfoList);
                 }
             });
             builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
