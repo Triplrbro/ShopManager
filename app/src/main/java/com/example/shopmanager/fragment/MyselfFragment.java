@@ -127,6 +127,14 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
         iv_userHead.setOnClickListener(this);
 
         ll_set.setOnClickListener(this);
+        ll_set.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent = new Intent(getContext(), AddDataActivity.class);
+                startActivity(intent);
+                return false;
+            }
+        });
         iv_order.setOnClickListener(this);
         ll_order.setOnClickListener(this);
         ll_add_shop.setOnClickListener(this);
@@ -139,8 +147,6 @@ public class MyselfFragment extends Fragment implements View.OnClickListener {
             case R.id.ll_set:
             case R.id.iv_set:
             case R.id.tv_set:
-                Intent intent = new Intent(getContext(), AddDataActivity.class);
-                startActivity(intent);
                 break;
             case R.id.ll_order:
             case R.id.iv_order:

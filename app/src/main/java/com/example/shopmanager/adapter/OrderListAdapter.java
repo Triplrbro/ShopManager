@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shopmanager.R;
 import com.example.shopmanager.controller.OrderSettlementController;
+import com.example.shopmanager.controller.UserController;
 import com.example.shopmanager.interfaces.OnItemClickListener;
 import com.example.shopmanager.service.db.bean.OrderSettlementInfo;
 import com.example.shopmanager.service.db.bean.ShoppingCart;
@@ -24,6 +25,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
     private List<OrderSettlementInfo> list;
     private Context context;
     private OnItemClickListener onItemClickListener;
+    private OrderSettlementController orderSettlementController;
 
 
     public OrderListAdapter(List<OrderSettlementInfo> list, Context context) {
@@ -67,14 +69,15 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.View
         holder.tv_person_address.setText(list.get(position).getAddress());
         holder.tv_person_name.setText(list.get(position).getName());
         holder.tv_person_phone.setText(list.get(position).getPhone());
-        holder.tv_order_number.setText(holder.tv_order_number.getText().toString().trim()+list.get(position).get_id());
+        holder.tv_order_number.setText("订单编号"+list.get(position).get_id());
         holder.tv_order_not_over.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OrderSettlementController orderSettlementController = new OrderSettlementController();
-                orderSettlementController.updateOrder(list.get(position),OrderSettlementController.SEND_ODER);
-                list.remove(position);
-                notifyDataSetChanged();
+                orderSettlementController = new OrderSettlementController();
+                orderSettlementController.updateOrder(list.get(position),OrderSettlementController.FINISH_ODER);
+                List<OrderSettlementInfo> orderSettlementInfos = new OrderSettlementController().queryOrderList(UserController.getUserId());
+                list = orderSettlementInfos;
+                    notifyDataSetChanged();
             }
         });
         List<ShoppingCart> shoppingCartList = list.get(position).getShoppingCartList();
